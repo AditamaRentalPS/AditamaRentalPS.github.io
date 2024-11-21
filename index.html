@@ -1,42 +1,97 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Utama dengan Background</title>
+    <title>Penyewaan PS - [Nama Usaha]</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="" type="image/x-icon">
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <div class="logo">MyWebsite</div>
+        <div class="logo">[Nama Usaha]</div>
         <nav>
             <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#game">Daftar Game</a></li>
+                <li><a href="#harga">Harga</a></li>
+                <li><a href="#testimoni">Testimoni</a></li>
+                <li><a href="#kontak">Hubungi Kami</a></li>
             </ul>
         </nav>
+        <button class="cta" onclick="scrollToSection('kontak')">Pesan Sekarang</button>
     </header>
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Welcome to MyWebsite</h1>
-            <p>Your one-stop solution for amazing experiences.</p>
-            <button onclick="scrollToSection('about')">Learn More</button>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero">
+        <h1>Selamat Datang di [Nama Usaha]</h1>
+        <p>Main PS Lebih Seru, Lebih Hemat!</p>
+        <button onclick="scrollToSection('harga')">Lihat Harga Sewa</button>
+    </section>
+
+    <!-- Tentang Kami -->
+    <section id="tentang">
+        <h2>Tentang Kami</h2>
+        <p>Kami menyediakan layanan penyewaan PlayStation terbaik dengan berbagai game terbaru!</p>
+    </section>
+
+    <!-- Daftar Game -->
+    <section id="game">
+        <h2>Daftar Game</h2>
+        <div class="game-list">
+            <div class="game-item">
+                <img src="game-thumbnail.jpg" alt="Game 1">
+                <h3>Nama Game</h3>
+                <p>Genre: Action</p>
+            </div>
         </div>
     </section>
-    <section id="about" class="about-section">
-        <h2>About Us</h2>
-        <p>We provide world-class services to make your life easier and better.</p>
+
+    <!-- Harga -->
+    <section id="harga">
+        <h2>Paket dan Harga</h2>
+        <table>
+            <tr>
+                <th>Paket</th>
+                <th>Durasi</th>
+                <th>Harga</th>
+            </tr>
+            <tr>
+                <td>Paket 1</td>
+                <td>2 Jam</td>
+                <td>Rp50.000</td>
+            </tr>
+        </table>
     </section>
-    <section id="services" class="services-section">
-        <h2>Our Services</h2>
-        <p>Explore a variety of services tailored to your needs.</p>
+
+    <!-- Testimoni -->
+    <section id="testimoni">
+        <h2>Testimoni</h2>
+        <blockquote>
+            "Layanannya sangat memuaskan! Game-nya lengkap dan konsolnya bagus!" - Pelanggan A
+        </blockquote>
     </section>
-    <footer class="footer-section">
-        <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+
+    <!-- Kontak -->
+    <section id="kontak">
+        <h2>Hubungi Kami</h2>
+        <form>
+            <label for="name">Nama</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Pesan</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Kirim</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 [Nama Usaha]. Semua Hak Dilindungi.</p>
     </footer>
+
+    <!-- JavaScript -->
     <script src="scripts.js"></script>
 </body>
 </html>
