@@ -76,3 +76,32 @@ footer {
   background: #333;
   color: #fff;
 }
+/* Background gambar untuk seluruh halaman */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('Pw.jpg') no-repeat center center; /* Gambar di tengah */
+  background-size: cover; /* Menyesuaikan ukuran gambar dengan layar */
+  font-family: Arial, sans-serif;
+}
+
+/* Gaya untuk kontainer konten */
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8); /* Latar putih transparan */
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3); /* Bayangan lembut */
+}
+
+h1 {
+  color: #333;
+}
+
+p {
+  color: #555;
+}
