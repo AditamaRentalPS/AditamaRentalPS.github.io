@@ -84,7 +84,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: url('Pw.jpg') no-repeat center center; /* Gambar di tengah */
+  background: url('Back\ ground.jpeg') no-repeat center center; /* Gambar di tengah */
   background-size: cover; /* Menyesuaikan ukuran gambar dengan layar */
   font-family: Arial, sans-serif;
 }
