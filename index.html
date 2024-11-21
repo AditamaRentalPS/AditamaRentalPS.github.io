@@ -1,45 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama dengan Background</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background-image: url(''); background-size: cover; background-position: center;">
-
-  <div class="sidebar">
-    <h2>Aditama PS</h2>
-    <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Reports</a></li>
-      <li><a href="#">Settings</a></li>
-      <li><a href="#">Profile</a></li>
-      <li><a href="https://maps.app.goo.gl/FsEXhNrejd9vgzBT8">Maps</a></li>
-    </ul>
-  </div>
-
-  <div class="main-content">
+<body>
     <header>
-      <h1>Welcome to Aditama Rental PS</h1>
-      <p>Today is <span id="date"></span></p>
+        <div class="logo">MyWebsite</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <section class="stats">
-      <div class="card">
-        <h3>Total Users</h3>
-        <p>1,234</p>
-      </div>
-      <div class="card">
-        <h3>Active Sessions</h3>
-        <p>123</p>
-      </div>
-      <div class="card">
-        <h3>Revenue</h3>
-        <p>$12,345</p>
-      </div>
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to MyWebsite</h1>
+            <p>Your one-stop solution for amazing experiences.</p>
+            <button onclick="scrollToSection('about')">Learn More</button>
+        </div>
     </section>
-  </div>
-
-  <script src="script.js"></script>
+    <section id="about" class="about-section">
+        <h2>About Us</h2>
+        <p>We provide world-class services to make your life easier and better.</p>
+    </section>
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+        <p>Explore a variety of services tailored to your needs.</p>
+    </section>
+    <footer class="footer-section">
+        <p>&copy; 2024 MyWebsite. All rights reserved.</p>
+    </footer>
+    <script src="scripts.js"></script>
 </body>
 </html>
