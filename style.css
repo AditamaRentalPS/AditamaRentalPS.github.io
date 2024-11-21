@@ -1,106 +1,78 @@
-/* General Reset */
-body, h1, h2, p, ul, li {
+/* Reset */
+body, h1, h2, p, ul, li, table {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
+/* Global Styles */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #f4f4f9;
-  color: #333;
 }
 
-/* Header Styling */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
-  background: rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  background: #333;
   color: #fff;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
-header .logo {
-  font-size: 1.5em;
-  font-weight: bold;
-}
+
 header ul {
   list-style: none;
   display: flex;
 }
+
 header ul li {
-  margin: 0 15px;
-}
-header ul li a {
-  text-decoration: none;
-  color: #fff;
-  transition: color 0.3s;
-}
-header ul li a:hover {
-  color: #f4a261;
+  margin: 0 10px;
 }
 
-/* Hero Section */
-.hero {
-  height: 100vh;
-  background: url('https://via.placeholder.com/1920x1080') no-repeat center center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+header ul li a {
   color: #fff;
-  text-align: center;
+  text-decoration: none;
 }
-.hero-content {
-  max-width: 600px;
-}
-.hero button {
+
+.cta {
   padding: 10px 20px;
-  background: #f4a261;
-  border: none;
+  background: #f04;
   color: #fff;
+  border: none;
   cursor: pointer;
   border-radius: 5px;
-  transition: background 0.3s;
-}
-.hero button:hover {
-  background: #e76f51;
 }
 
-/* About Section */
-.about-section {
-  padding: 40px 20px;
-  background: url('https://via.placeholder.com/1920x500') no-repeat center center/cover;
+.hero {
+  text-align: center;
+  padding: 50px 20px;
+  background: url('hero-bg.jpg') no-repeat center center/cover;
   color: #fff;
+}
+
+section {
+  padding: 50px 20px;
   text-align: center;
 }
-.about-section h2 {
-  margin-bottom: 10px;
-}
-.about-section p {
-  font-size: 1.1em;
+
+section h2 {
+  margin-bottom: 20px;
 }
 
-/* Services Section */
-.services-section {
-  padding: 40px 20px;
-  background: linear-gradient(135deg, #6c5ce7, #0984e3);
-  color: #fff;
+.game-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.game-item {
+  margin: 10px;
   text-align: center;
 }
-.services-section h2 {
-  margin-bottom: 10px;
-}
-.services-section p {
-  font-size: 1.1em;
-}
 
-/* Footer Section */
-.footer-section {
-  padding: 10px 20px;
+footer {
+  text-align: center;
+  padding: 20px;
   background: #333;
   color: #fff;
-  text-align: center;
 }
