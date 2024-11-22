@@ -124,7 +124,7 @@ body {
 
 img.slide-image {
   width: 200px;
-  height: 200px;
+  height: 100px;
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.3s ease;
