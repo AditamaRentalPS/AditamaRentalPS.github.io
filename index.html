@@ -40,81 +40,40 @@
         <h2>Daftar Game</h2>
         <div class="game-list">
             <div class="game-item">
-                <section id="slideshow">
-                    <div class="slideshow-container">
-                        <!-- Slide 1 -->
-                        <div class="slide fade">
-                            <img src="PES.jpeg" alt="Gambar 1">
-                            <div class="caption">Pes 24 = Strategic, tactic</div>
-                        </div>
-                
-                        <!-- Slide 2 -->
-                        <div class="slide fade">
-                            <img src="Resident Evil.jpeg" alt="Gambar 2">
-                            <div class="caption">Resident evil=Gendre Survival Horor</div>
-                        </div>
-                
-                        <!-- Slide 3 -->
-                        <div class="slide fade">
-                            <img src="Call of duty.jpeg" alt="Gambar 3">
-                            <div class="caption">Strategic, Survival</div>
-                        </div>
-                
-                        <!-- Slide 4 -->
-                        <div class="slide fade">
-                            <img src="Naruto Shippuden_ Ultimate Ninja Heroes 3 - SONY PSP [Pre-Owned] - PRE-OWNED GAME DISC WITH GAME CASE AND GAME COVER.jpeg" alt="Gambar 4">
-                            <div class="caption">Strategic, Survival, Action </div>
-                        </div>
-                
-                        <!-- Slide 5 -->
-                        <div class="slide fade">
-                            <img src="GTA.jpeg" alt="Gambar 5">
-                            <div class="caption">Action, Adventure</div>
-                        </div>
-                
-                        <!-- Slide 6 -->
-                        <div class="slide fade">
-                            <img src="Yakuza 6.jpeg" alt="Gambar 6">
-                            <div class="caption">Action, Adventure</div>
-                        </div>
-                
-                        <!-- Navigation buttons -->
-                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <div class="slideshow-container">
+                    <div class="slide">
+                      <img src="Naruto Shipuden.jpeg" alt="Image 1" class="slide-image">
+                      <p class="caption">Naruto Shipusen: Action, Adventure, Strategic.</p>
                     </div>
-                    <br>
-                    <!-- Dots -->
-                    <div class="dots-container">
-                        <span class="dot" onclick="currentSlide(1)"></span>
-                        <span class="dot" onclick="currentSlide(2)"></span>
-                        <span class="dot" onclick="currentSlide(3)"></span>
-                        <span class="dot" onclick="currentSlide(4)"></span>
-                        <span class="dot" onclick="currentSlide(5)"></span>
-                        <span class="dot" onclick="currentSlide(6)"></span>
+                    <div class="slide">
+                      <img src="image2.jpg" alt="Image 2" class="slide-image">
+                      <p class="caption">Penjelasan gambar 2: Deskripsi gambar kedua.</p>
                     </div>
-                </section>
+                    <div class="slide">
+                      <img src="image3.jpg" alt="Image 3" class="slide-image">
+                      <p class="caption">Penjelasan gambar 3: Deskripsi gambar ketiga.</p>
+                    </div>
+                    <div class="slide">
+                      <img src="image4.jpg" alt="Image 4" class="slide-image">
+                      <p class="caption">Penjelasan gambar 4: Deskripsi gambar keempat.</p>
+                    </div>
+                    <div class="slide">
+                      <img src="image5.jpg" alt="Image 5" class="slide-image">
+                      <p class="caption">Penjelasan gambar 5: Deskripsi gambar kelima.</p>
+                    </div>
+                    <div class="slide">
+                      <img src="image6.jpg" alt="Image 6" class="slide-image">
+                      <p class="caption">Penjelasan gambar 6: Deskripsi gambar keenam.</p>
+                    </div>
+                  </div>
                 
-            </div>
-        </div>
-    </section>
-
-    <!-- Harga -->
-    <section id="harga">
-        <h2>Paket dan Harga</h2>
-        <table>
-            <tr>
-                <th>Paket</th>
-                <th>Durasi</th>
-                <th>Harga</th>
-            </tr>
-            <tr>
-                <td>Paket 1</td>
-                <td>2 Jam</td>
-                <td>Rp50.000</td>
-            </tr>
-        </table>
-    </section>
-
+                  <div id="zoomModal" class="zoom-modal">
+                    <span class="close" id="closeZoom">&times;</span>
+                    <img id="zoomedImage" class="zoomed-image">
+                    <p id="zoomCaption" class="zoom-caption"></p>
+                  </div>
+                
+                  <script src="script.js"></script>
     <!-- Testimoni -->
     <section id="testimoni">
         <h2>Testimoni</h2>

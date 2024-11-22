@@ -12,40 +12,41 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
       scrollToSection(targetId);
   });
 });
-let slideIndex = 1;
-showSlides(slideIndex);
+let slideIndex = 0;
 
-// Next/Previous controls
-function plusSlides(n) {
-    showSlides(slideIndex += n);
+function showSlides() {
+  let slides = document.querySelectorAll(".slide");
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+  slides[slideIndex - 1].style.display = "block";
+  setTimeout(showSlides, 3000); // Ubah gambar setiap 3 detik
 }
 
-// Dot controls
-function currentSlide(n) {
-    showSlides(slideIndex = n);
+function zoomImage(event) {
+  let zoomModal = document.getElementById("zoomModal");
+  let zoomedImage = document.getElementById("zoomedImage");
+  let zoomCaption = document.getElementById("zoomCaption");
+  
+  zoomModal.style.display = "flex";
+  zoomedImage.src = event.target.src;
+  
+  // Menampilkan penjelasan gambar yang sesuai dengan gambar yang di-zoom
+  let caption = event.target.nextElementSibling.textContent;
+  zoomCaption.textContent = caption;
 }
 
-function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("dot");
-
-    if (n > slides.length) { slideIndex = 1; }
-    if (n < 1) { slideIndex = slides.length; }
-
-    for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";
-    }
-
-    for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }
-
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
+function closeZoom() {
+  let zoomModal = document.getElementById("zoomModal");
+  zoomModal.style.display = "none";
 }
 
-// Automatic Slideshow
-setInterval(() => {
-    plusSlides(1);
-}, 5000); // Ganti gambar setiap 5 detik
+document.querySelectorAll('.slide-image').forEach(image => {
+  image.addEventListener('click', zoomImage);
+});
+
+document.getElementById("closeZoom").addEventListener("click", closeZoom);
+
+showSlides();
