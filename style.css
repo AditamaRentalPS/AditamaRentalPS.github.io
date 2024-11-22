@@ -123,8 +123,8 @@ body {
 }
 
 img.slide-image {
-  width: 200px;
-  height: 200px;
+  width: 270px;
+  height: 335px;
   object-fit: cover;
   cursor: pointer;
   transition: transform 0.3s ease;
