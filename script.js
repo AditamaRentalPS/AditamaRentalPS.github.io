@@ -7,11 +7,17 @@ function scrollToSection(id) {
 
 document.querySelectorAll('nav ul li a').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href.startsWith('http')) {
+          // Biarkan link eksternal bekerja
+          return;
+      }
       e.preventDefault();
-      const targetId = this.getAttribute('href').substring(1);
+      const targetId = href.substring(1);
       scrollToSection(targetId);
   });
 });
+
 let slideIndex = 0;
 
 function showSlides() {
