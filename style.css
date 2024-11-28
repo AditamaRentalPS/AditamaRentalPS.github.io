@@ -11,36 +11,53 @@ body {
   line-height: 1.6;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px;
-  background: #333;
+/* Konsistensi Ukuran Header dan Footer */
+header, footer {
+  background: linear-gradient(to right, #444, #222);
   color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Header Styling */
 header ul {
   list-style: none;
   display: flex;
+  margin: 0;
 }
 
 header ul li {
-  margin: 0 10px;
+  margin: 0 15px;
 }
 
 header ul li a {
   color: #fff;
   text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+  color: #ffcc00;
 }
 
 .cta {
   padding: 10px 20px;
-  background: #f04;
-  color: #fff;
+  background: #ffcc00;
+  color: #333;
   border: none;
   cursor: pointer;
   border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.cta:hover {
+  background: #fff;
+  color: #000;
 }
 
 .hero {
@@ -196,26 +213,34 @@ img.slide-image:hover {
   font-weight: bold;
   cursor: pointer;
 }
+/* Footer Styling */
 footer {
-  background-color: #333;
-  color: white;
   text-align: center;
-  padding: 20px 10px;
-  margin-top: 20px;
+  padding: 20px 10%;
+  font-size: 14px;
+  background: linear-gradient(to right, #222, #444);
 }
 
 footer a {
   color: #ffcc00;
   text-decoration: none;
   margin: 0 5px;
+  font-size: 14px;
+  transition: color 0.3s ease;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: #fff;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+.footer-container p {
+  margin: 0;
+}
