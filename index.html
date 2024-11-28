@@ -74,19 +74,33 @@
                   </div>
                 
                   <script src="script.js"></script>
-                  <!-- Maps Section -->
+ <!-- Maps Section -->
 <div class="maps-container">
-    <h2>Lokasi Kami</h2>
-    <iframe 
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16334411.419474853!2d93.0673751!3d-1.7798502!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e69cee253ef7%3A0xaf30d2753bc2896f!2sRENTAL%20PS3-PS4%20Bawa%20kerumah%20%26%20GAME%20ONLINE!5e0!3m2!1sid!2sid!4v1732782761991!5m2!1sid!2sid"
-        width="100%" 
-        height="400" 
-        frameborder="0" 
-        style="border:0;" 
-        allowfullscreen="" 
-        aria-hidden="false" 
-        tabindex="0">
-    </iframe>
+  <h2>Lokasi Kami</h2>
+  <iframe 
+      id="mapsIframe"
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16334411.419474853!2d93.0673751!3d-1.7798502!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e69cee253ef7%3A0xaf30d2753bc2896f!2sRENTAL%20PS3-PS4%20Bawa%20kerumah%20%26%20GAME%20ONLINE!5e0!3m2!1sid!2sid!4v1732783056848!5m2!1sid!2sid" 
+      width="100%" 
+      height="400" 
+      frameborder="0" 
+      style="border:0;" 
+      allowfullscreen="" 
+      aria-hidden="false" 
+      tabindex="0">
+  </iframe>
+</div>
+
+<!-- Zoom Modal for Maps -->
+<div id="zoomMapsModal" class="zoom-modal">
+  <span class="close" id="closeMapsZoom">&times;</span>
+  <iframe 
+      id="zoomedMapsIframe" 
+      class="zoomed-maps" 
+      src="" 
+      frameborder="0" 
+      allowfullscreen="" 
+      style="width: 90%; height: 90%;">
+  </iframe>
 </div>
     <!-- Testimoni -->
     <section id="testimoni">

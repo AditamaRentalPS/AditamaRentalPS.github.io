@@ -56,3 +56,22 @@ document.querySelectorAll('.slide-image').forEach(image => {
 document.getElementById("closeZoom").addEventListener("click", closeZoom);
 
 showSlides();
+// Script for Zooming Maps
+document.addEventListener('DOMContentLoaded', () => {
+  const mapsIframe = document.getElementById('mapsIframe');
+  const zoomMapsModal = document.getElementById('zoomMapsModal');
+  const zoomedMapsIframe = document.getElementById('zoomedMapsIframe');
+  const closeMapsZoom = document.getElementById('closeMapsZoom');
+
+  // Open Zoom Modal
+  mapsIframe.addEventListener('click', () => {
+      zoomedMapsIframe.src = mapsIframe.src; // Copy the maps src
+      zoomMapsModal.style.display = 'block';
+  });
+
+  // Close Zoom Modal
+  closeMapsZoom.addEventListener('click', () => {
+      zoomMapsModal.style.display = 'none';
+      zoomedMapsIframe.src = ''; // Clear the src to stop loading
+  });
+});
