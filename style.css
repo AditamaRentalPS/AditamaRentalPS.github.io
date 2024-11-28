@@ -166,3 +166,12 @@ img.slide-image:hover {
   color: white;
   cursor: pointer;
 }
+.maps-container {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.maps-container h2 {
+  margin-bottom: 10px;
+}
+
