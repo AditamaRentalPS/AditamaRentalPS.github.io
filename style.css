@@ -22,41 +22,44 @@ header, footer {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-     /* Media Queries */
-     @media (max-width: 768px) {
-      header {
-          flex-direction: column;
-          text-align: center;
-      }
+/* Header Styling */
+header ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+}
 
-      nav ul {
-          flex-direction: column;
-          margin-top: 10px;
-      }
+header ul li {
+  margin: 0 15px;
+}
 
-      nav ul li {
-          margin: 5px 0;
-      }
+header ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
 
-      .hero h1 {
-          font-size: 1.5rem;
-      }
+header ul li a:hover {
+  color: #ffcc00;
+}
 
-      .hero p {
-          font-size: 1rem;
-      }
-  }
+.cta {
+  padding: 10px 20px;
+  background: #ffcc00;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
-  @media (max-width: 480px) {
-      .hero h1 {
-          font-size: 1.2rem;
-      }
+.cta:hover {
+  background: #fff;
+  color: #000;
+}
 
-      .cta {
-          padding: 8px 15px;
-          font-size: 0.9rem;
-      }
-  }
 .hero {
   text-align: center;
   padding: 50px 20px;
