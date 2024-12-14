@@ -1,15 +1,5 @@
 RewriteEngine On
+# Redirect semua halaman ke maintenance.html, kecuali untuk file itu sendiri
 RewriteCond %{REQUEST_URI} !^/maintenance.html$
+RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123$ # Ganti dengan IP Anda (Whitelist admin)
 RewriteRule ^(.*)$ /maintenance.html [R=302,L]
-server {
-    listen 80;
-    server_name yourwebsite.com;
-
-    location / {
-        return 302 /maintenance.html;
-    }
-
-    location = /maintenance.html {
-        root /path/to/your/site;
-    }
-}

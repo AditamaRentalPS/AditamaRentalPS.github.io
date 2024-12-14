@@ -1,164 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="-gNmw1PI0mEtioQ02DsjFUu7lRmnKEQ3nCx5NEINXgs" />
-    <title> Aditama PS</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="Logo.jpeg" type="image/jpg">
- <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-57FQPJRC');</script>
-  <!-- End Google Tag Manager -->
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding: 50px;
-        background-color: #f4f4f4;
+server {
+    listen 80;
+    server_name yourwebsite.com www.yourwebsite.com;
+
+    location / {
+        return 302 /maintenance.html;
     }
-    h1 {
-        color: #333;
+
+    location = /maintenance.html {
+        root /var/www/html; # Lokasi root website Anda
     }
-</style>
-</head>
-<body>
-    <h1>Website Sedang Dalam Perbaikan</h1>
-    <p>Kami sedang melakukan pembaruan. Mohon kembali lagi nanti.</p>
-    <!-- Header -->
-    <header>
-        <div class="logo">ADITAMA RENTAL PS</div>
-        <nav>
-            <ul>
-              <li><a href="https://aditamarentalps.github.io/Paket_PS/">Price list</a></li>
-              <li><a href="#game">Daftar Game</a></li>
-              <li><a href="#testimoni">Testimoni</a></li>
-              <li><a href="#kontak">Hubungi Kami</a></li>
-            </ul>
-        </nav>
-        <button class="cta" onclick="window.location.href='https://wa.me/6289688776464'">Chat Penjual</button>
-      </header>
-    <!-- Hero Section -->
-    <section id="beranda" class="hero">
-        <h1>Selamat Datang di Aditama PS</h1>
-        <p>Main PS Lebih Seru, Lebih Hemat, Dan cocok nih buat temen temen yg suka gadang di hari-hari libur...!</p>
-    </section>
 
-    <!-- Tentang Kami -->
-    <section id="tentang">
-        <h2>Tentang Kami</h2>
-        <p>Kami menyediakan layanan penyewaan PlayStation terbaik dengan berbagai game terbaru PS 3 Dan PS 4</p>
-  </head>
-  <body>
-    <!-- Daftar Game -->
-    <section id="game">
-        <h2>Daftar Game</h2>
-        <div class="game-list">
-            <div class="game-item">
-                <div class="slideshow-container">
-                    <div class="slide">
-                      <img src="Naruto Shippuden_ Ultimate Ninja Heroes 3 - SONY PSP [Pre-Owned] - PRE-OWNED GAME DISC WITH GAME CASE AND GAME COVER.jpeg" alt="Naruto shipuden" class="slide-image">
-                      <p class="caption">Naruto Shipusen: Action, Adventure, Strategic.</p>
-                    </div>
-                    <div class="slide">
-                      <img src="PES.jpeg" alt="Image 2" class="slide-image">
-                      <p class="caption">Pes 24: Strategic, Tactic.</p>
-                    </div>
-                    <div class="slide">
-                      <img src="Call of duty.jpeg" alt="Image 3" class="slide-image">
-                      <p class="caption">Call of Duty:Action, Strategic .</p>
-                    </div>
-                    <div class="slide">
-                      <img src="Resident Evil.jpeg" alt="Image 4" class="slide-image">
-                      <p class="caption">Resident Evil: Mision, Survival, Adventure.</p>
-                    </div>
-                    <div class="slide">
-                      <img src="Yakuza 6.jpeg" alt="Image 5" class="slide-image">
-                      <p class="caption">Yakuza 6: Adventure, Mision.</p>
-                    </div>
-                    <div class="slide">
-                      <img src="GTA.jpeg" alt="Image 6" class="slide-image">
-                      <p class="caption">GTA: Adventure, Mision.</p>
-                    </div>
-                  </div>
-                
-                  <div id="zoomModal" class="zoom-modal">
-                    <span class="close" id="closeZoom">&times;</span>
-                    <img id="zoomedImage" class="zoomed-image">
-                    <p id="zoomCaption" class="zoom-caption"></p>
-                  </div>
-                
-                  <script src="script.js"></script>
- <!-- Maps Section -->
-<div class="maps-container">
-  <h2>Lokasi Kami</h2>
-  <iframe 
-      id="mapsIframe"
-      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16334411.419474853!2d93.0673751!3d-1.7798502!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e69cee253ef7%3A0xaf30d2753bc2896f!2sRENTAL%20PS3-PS4%20Bawa%20kerumah%20%26%20GAME%20ONLINE!5e0!3m2!1sid!2sid!4v1732783056848!5m2!1sid!2sid" 
-      width="100%" 
-      height="400" 
-      frameborder="0" 
-      style="border:0;" 
-      allowfullscreen="" 
-      aria-hidden="false" 
-      tabindex="0">
-  </iframe>
-</div>
-
-<!-- Zoom Modal for Maps -->
-<div id="zoomMapsModal" class="zoom-modal">
-  <span class="close" id="closeMapsZoom">&times;</span>
-  <iframe 
-      id="zoomedMapsIframe" 
-      class="zoomed-maps" 
-      src="" 
-      frameborder="0" 
-      allowfullscreen="" 
-      style="width: 90%; height: 90%;">
-  </iframe>
-</div>
-    <!-- Testimoni -->
-    <section id="testimoni">
-        <h2>Testimoni</h2>
-        <blockquote>
-            "Layanannya sangat memuaskan! Game-nya lengkap dan konsolnya bagus!" - Pelanggan A
-        </blockquote>
-    </section>
-
-    <!-- Kontak -->
-    <section id="kontak">
-        <h2>Hubungi Kami</h2>
-        <form>
-            <label for="name">Nama</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            <label for="message">Pesan</label>
-            <textarea id="message" name="message" required></textarea>
-            <button type="submit">Kirim</button>
-        </form>
-    </section>
-
-    <!-- JavaScript -->
-    <script src="scripts.js"></script>
-        <!-- Footer -->
-        <footer>
-          <div class="footer-container">
-              <p>&copy; 2024 Aditama Rental PS. All rights reserved.</p>
-              <p>
-                  <a href="https://wa.me/6289688776464">WhatsApp</a> | 
-                  <a href="https://www.instagram.com/your_instagram/">Instagram</a> | 
-                  <a href="mailto:contact@aditamarentalps.com">Email</a>
-              </p>
-          </div>
-      </footer>
-  <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-57FQPJRC"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
-</body>
-</html>
+    # (Opsional) Whitelist IP untuk admin
+    location / {
+        allow 123.123.123.123; # Ganti dengan IP Anda
+        deny all;
+    }
+}
