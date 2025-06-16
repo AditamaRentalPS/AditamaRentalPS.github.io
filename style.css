@@ -241,4 +241,6 @@ footer a:hover {
   align-items: center;
 }
 
-.footer-contp
+.footer-container p {
+  margin: 0;
+}
