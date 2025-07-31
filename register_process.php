@@ -84,6 +84,7 @@ try {
 } catch (Exception $e) {
     // Tangani error database saat cek email
     $_SESSION['reg_error'] = "Kesalahan database saat memeriksa email: " . $e->getMessage();
+    error_log("Registration Check Email Error: " . $e->getMessage()); // Log error untuk debugging
     header('Location: register.php');
     exit;
 } finally {
@@ -105,10 +106,15 @@ try {
 
     if ($insert_stmt->execute()) {
         // Registrasi berhasil!
-        $_SESSION['user_id'] = $conn->insert_id; // Dapatkan ID user yang baru saja dibuat
-        $_SESSION['user_name'] = $name;
-        $_SESSION['user_email'] = $email;
+        // Anda bisa memilih untuk langsung login user atau mengarahkan ke halaman login
+        // Untuk saat ini, kita akan mengarahkan ke halaman login dengan pesan sukses.
+        // $_SESSION['user_id'] = $conn->insert_id; // Dapatkan ID user yang baru saja dibuat
+        // $_SESSION['user_name'] = $name;
+        // $_SESSION['user_email'] = $email;
         $_SESSION['reg_success'] = "Registrasi berhasil! Silakan login."; // Pesan sukses
+
+        // Hapus data lama dari session setelah registrasi berhasil
+        unset($_SESSION['old_reg_data']); 
 
         // Arahkan ke halaman login
         header("Location: login.php");
@@ -120,6 +126,7 @@ try {
 } catch (Exception $e) {
     // Tangani error database saat menyimpan user
     $_SESSION['reg_error'] = "Terjadi kesalahan saat menyimpan data: " . $e->getMessage();
+    error_log("Registration Insert User Error: " . $e->getMessage()); // Log error untuk debugging
     header('Location: register.php');
     exit;
 } finally {

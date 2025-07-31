@@ -72,7 +72,8 @@ unset($_SESSION['old_reg_data']);
             <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-md transition">Daftar</button>
         </form>
         <p class="text-sm text-center mt-4">Sudah punya akun? <a href="login.php" class="text-blue-400 hover:underline">Login di sini</a></p>
-        <p class="text-sm text-center mt-2">Kembali ke <a href="index.html" class="text-blue-400 hover:underline">Halaman Utama</a></p>
+        <!-- FIX: Changed href="index.html" to href="index.php" -->
+        <p class="text-sm text-center mt-2">Kembali ke <a href="index.php" class="text-blue-400 hover:underline">Halaman Utama</a></p>
     </div>
 </body>
 </html>

@@ -50,7 +50,7 @@ include __DIR__ . '/../../db.php';
             <a href="../../logout.php" class="text-sm text-red-400 hover:text-red-200">Logout</a>
         </div>
 
-        <a href="tambah.php" class="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        <a href="table/game/tambah.php" class="mb-4 inline-block bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
             + Tambah Game
         </a>
 
