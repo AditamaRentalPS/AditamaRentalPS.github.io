@@ -36,7 +36,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 
 // --- Proses Autentikasi ---
 $stmt = null; // Inisialisasi statement
-$is_admin = false; // Flag untuk menentukan apakah yang login adalah admin
+// $is_admin = false; // Flag untuk menentukan apakah yang login adalah admin (not strictly needed with separate redirects)
 
 try {
     // 1. Coba autentikasi sebagai PENGGUNA BIASA (tabel `users`)
@@ -56,6 +56,9 @@ try {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['user_name'] = $user['name'];
             $_SESSION['user_email'] = $user['email'];
+            
+            // Hapus email lama dari session setelah login berhasil
+            unset($_SESSION['old_login_email']); 
             
             header("Location: index.php"); // Redirect ke halaman utama atau dashboard user
             exit;
@@ -80,6 +83,9 @@ try {
             $_SESSION['admin_id'] = $admin_user['id'];
             $_SESSION['admin_name'] = $admin_user['name'];
             $_SESSION['admin_email'] = $admin_user['email'];
+
+            // Hapus email lama dari session setelah login berhasil
+            unset($_SESSION['old_login_email']);
             
             header("Location: admin.php"); // Redirect ke halaman admin dashboard
             exit;
@@ -95,15 +101,14 @@ try {
 } catch (Exception $e) {
     // Tangani error database umum
     $_SESSION['login_error'] = "Terjadi kesalahan database: " . $e->getMessage();
+    error_log("Login Error: " . $e->getMessage()); // Log error untuk debugging
     header('Location: login.php');
     exit;
 } finally {
-    // Pastikan statement ditutup jika masih terbuka (redundant karena sudah ada di setiap blok if/else if)
-    // dan koneksi ditutup.
-    if ($stmt) {
-        $stmt->close();
+    // Pastikan koneksi ditutup.
+    if ($conn) {
+        $conn->close();
     }
-    $conn->close();
 }
 
 ?>

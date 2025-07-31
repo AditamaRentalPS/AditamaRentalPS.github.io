@@ -1,12 +1,29 @@
 <?php
 session_start(); // Selalu mulai session di awal file PHP yang menggunakan session
 
-// Opsional: Anda bisa menyertakan config.php di sini jika Anda ingin mengambil data dinamis
-// untuk daftar paket sewa dari database. Untuk saat ini, kita biarkan hardcode di HTML.
-// require_once 'config.php';
-
 // Cek apakah user sedang login (untuk tampilan Sign In/Logout di navbar)
-$isLoggedIn = isset($_SESSION['user_id']);
+$isLoggedIn = isset($_SESSION['user_id']); // Cek apakah user biasa login
+if (!$isLoggedIn && isset($_SESSION['admin_logged_in'])) {
+    // Jika bukan user biasa tapi admin yang login, anggap juga sebagai 'logged in' untuk tampilan navbar
+    $isLoggedIn = true;
+}
+
+
+// Data paket sewa untuk harga per jam (disimpan tapi tidak lagi ditampilkan di sidebar)
+$psPackages = [
+    'ps5_standard' => ['name' => 'PS5 Standard Edition', 'hourly_rate' => 25000],
+    'ps4_pro' => ['name' => 'PS4 Pro Edition', 'hourly_rate' => 15000],
+    'ps3_classic' => ['name' => 'PS3 Classic Edition', 'hourly_rate' => 10000],
+];
+
+// Data menu minuman/makanan (disimpan tapi tidak lagi ditampilkan di sidebar)
+$menuItems = [
+    ['name' => 'Mie Instan', 'price' => 10000],
+    ['name' => 'Teh Hangat', 'price' => 5000],
+    ['name' => 'Kopi Hitam', 'price' => 7000],
+    ['name' => 'Susu Kotak', 'price' => 8000],
+    ['name' => 'Air Mineral Botol', 'price' => 3000],
+];
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +47,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
         }
     </style>
 </head>
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white relative">
 
     <div class="bg-black text-gray-400 text-xs py-1 px-4 flex justify-between items-center">
         <div class="flex space-x-4">
@@ -52,7 +69,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
     <header class="bg-gray-900 sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-            <a class="flex items-center space-x-2" href="#">
+            <a class="flex items-center space-x-2" href="index.php">
                 <img alt="Logo PS Rental Indonesia with a PlayStation controller icon and text" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/346efd31-3ca4-4b96-8bd3-0f0864a4d339.jpg" width="120"/>
             </a>
             <nav class="hidden md:flex space-x-8 font-semibold text-gray-300">
@@ -60,6 +77,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                 <a class="hover:text-white transition" href="#how-it-works">Cara Sewa</a>
                 <a class="hover:text-white transition" href="#game-slideshow">Game Populer</a>
                 <a class="hover:text-white transition" href="#testimonials">Testimoni</a>
+                <a class="hover:text-white transition" href="makanan.php">Makanan & Minuman</a>
                 <a class="hover:text-white transition" href="#contact">Kontak</a>
             </nav>
             <div class="md:hidden">
@@ -73,6 +91,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#how-it-works">Cara Sewa</a>
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#game-slideshow">Game Populer</a>
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#testimonials">Testimoni</a>
+            <a class="hover:text-white transition" href="makanan.php">Makanan & Minuman</a>
             <a class="block px-4 py-3 hover:bg-gray-700 transition" href="#contact">Kontak</a>
         </nav>
     </header>
@@ -311,6 +330,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
                     <li><a class="hover:text-white" href="#">Kebijakan Pengembalian</a></li>
                     <li><a class="hover:text-white" href="#">Syarat &amp; Ketentuan</a></li>
                     <li><a class="hover:text-white text-blue-400" href="admin.php">Admin Panel</a></li> </ul>
+                </ul>
             </div>
             <div>
                 <h4 class="text-white font-semibold mb-4">Kontak</h4>
@@ -332,7 +352,6 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
         // === Rental Form Price Calculation ===
         const rentalForm = document.getElementById('rental-form');
-        // const successMessage = document.getElementById('success-message-js-only'); // Tidak digunakan lagi karena pesan dari PHP
         const packageSelect = document.getElementById('package');
         const durationTypeSelect = document.getElementById('duration-type');
         const durationInput = document.getElementById('duration');
@@ -377,14 +396,7 @@ $isLoggedIn = isset($_SESSION['user_id']);
 
 
         // === Rental Form Submission (Sekarang hanya validasi HTML5) ===
-        // Form ini akan disubmit secara alami ke process_order.php
         rentalForm.addEventListener('submit', (e) => {
-            // HTML5 validation akan berjalan secara otomatis karena ada atribut 'required'
-            // Jika Anda ingin melakukan validasi JS kustom di sini, Anda bisa menambahkan logika.
-            // Tidak perlu e.preventDefault() kecuali Anda ingin AJAX submission.
-            // Pesan sukses/error akan ditangani oleh PHP dan session setelah redirect.
-
-            // Opsional: Jika Anda ingin memastikan total harga dihitung SEBELUM submit terakhir:
             calculateTotalPrice();
         });
 

@@ -62,7 +62,7 @@ unset($_SESSION['old_login_email']); // Hapus email lama setelah diambil
             <button type="submit" class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold py-3 rounded-md transition">Login</button>
         </form>
         <p class="text-sm text-center mt-4">Belum punya akun? <a href="register.php" class="text-blue-400 hover:underline">Daftar di sini</a></p>
-        <p class="text-sm text-center mt-2">Kembali ke <a href="index.html" class="text-blue-400 hover:underline">Halaman Utama</a></p>
+        <p class="text-sm text-center mt-2">Kembali ke <a href="index.php" class="text-blue-400 hover:underline">Halaman Utama</a></p>
     </div>
 </body>
 </html>
