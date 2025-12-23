@@ -16,14 +16,6 @@ $psPackages = [
     'ps3_classic' => ['name' => 'PS3 Classic Edition', 'hourly_rate' => 10000],
 ];
 
-// Data menu minuman/makanan (disimpan tapi tidak lagi ditampilkan di sidebar)
-$menuItems = [
-    ['name' => 'Mie Instan', 'price' => 10000],
-    ['name' => 'Teh Hangat', 'price' => 5000],
-    ['name' => 'Kopi Hitam', 'price' => 7000],
-    ['name' => 'Susu Kotak', 'price' => 8000],
-    ['name' => 'Air Mineral Botol', 'price' => 3000],
-];
 ?>
 
 <!DOCTYPE html>
@@ -77,7 +69,6 @@ $menuItems = [
                 <a class="hover:text-white transition" href="#how-it-works">Cara Sewa</a>
                 <a class="hover:text-white transition" href="#game-slideshow">Game Populer</a>
                 <a class="hover:text-white transition" href="#testimonials">Testimoni</a>
-                <a class="hover:text-white transition" href="makanan.php">Makanan & Minuman</a>
                 <a class="hover:text-white transition" href="#contact">Kontak</a>
             </nav>
             <div class="md:hidden">
@@ -91,7 +82,6 @@ $menuItems = [
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#how-it-works">Cara Sewa</a>
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#game-slideshow">Game Populer</a>
             <a class="block px-4 py-3 border-b border-gray-700 hover:bg-gray-700 transition" href="#testimonials">Testimoni</a>
-            <a class="hover:text-white transition" href="makanan.php">Makanan & Minuman</a>
             <a class="block px-4 py-3 hover:bg-gray-700 transition" href="#contact">Kontak</a>
         </nav>
     </header>
