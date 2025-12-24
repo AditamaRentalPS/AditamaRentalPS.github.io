@@ -62,7 +62,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Masukkan data ke database
     // Pastikan tabel `orders` memiliki kolom: order_id, customer_name, console_model, rental_date, duration, status
-    $stmt = $conn->prepare("INSERT INTO orders (order_id, customer_name, console_model, rental_date, duration, status) VALUES (?, ?, ?, ?, ?, ?)");
+   // process_order.php
+
+// Ambil waktu sekarang sebagai waktu mulai
+$start_time = date("Y-m-d H:i:s");
+
+// Hitung waktu selesai
+if ($duration_type == 'jam') {
+    $end_time = date("Y-m-d H:i:s", strtotime("+$duration hours"));
+} else {
+    // Jika hari, asumsikan 24 jam per hari
+    $end_time = date("Y-m-d H:i:s", strtotime("+$duration days"));
+}
+
+// Update Query INSERT (Tambahkan kolom start_time dan end_time)
+$stmt = $conn->prepare("INSERT INTO orders (order_id, customer_name, console_model, rental_date, duration, status, start_time, end_time) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssssss", $order_id, $name, $console_model_for_db, $rental_date, $duration_text, $status, $start_time, $end_time);
 
     if ($stmt) {
         $status = 'Pending'; // Status awal pesanan
