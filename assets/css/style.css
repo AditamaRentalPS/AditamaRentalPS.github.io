@@ -118,36 +118,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.slideshow-container {
-  position: relative;
-  max-width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.slide {
-  display: none;
-  text-align: center;
-}
-
-img.slide-image {
-  width: 270px;
-  height: 335px;
-  object-fit: cover;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-img.slide-image:hover {
-  transform: scale(1.1);
-}
-
-.caption {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #555;
+.game-item img {
+  width: 100%;
+  height: 320px;
+  object-fit: contain; /* PENTING */
+  background-color: #000;
 }
 
 .zoom-modal {

@@ -18,19 +18,6 @@ document.querySelectorAll('nav ul li a').forEach(anchor => {
   });
 });
 
-let slideIndex = 0;
-
-function showSlides() {
-  let slides = document.querySelectorAll(".slide");
-  for (let i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  slideIndex++;
-  if (slideIndex > slides.length) { slideIndex = 1 }
-  slides[slideIndex - 1].style.display = "block";
-  setTimeout(showSlides, 3000); // Ubah gambar setiap 3 detik
-}
-
 function zoomImage(event) {
   let zoomModal = document.getElementById("zoomModal");
   let zoomedImage = document.getElementById("zoomedImage");

@@ -427,22 +427,18 @@ $psPackages = [
             currentIndex = (currentIndex + 1) % totalSlides;
             updateSlidePosition();
         }, 5000);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+        const container = document.getElementById('game-slides-container');
+        const slides = container.children;
+        let index = 0;
+        const total = slides.length;
 
-        // Pause slideshow saat kursor di atas container
-        gameSlidesContainer.parentElement.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
+        setInterval(() => {
+            index = (index + 1) % total;
+            container.style.transform = `translateX(-${index * 100}%)`;
+        }, 3500);
         });
-        gameSlidesContainer.parentElement.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalSlides;
-                updateSlidePosition();
-            }, 5000);
-        });
-
-        // Re-initialize slide position saat ukuran jendela berubah (responsif)
-        window.addEventListener('resize', updateSlidePosition);
-        // Panggil sekali saat load untuk posisi awal yang benar
-        updateSlidePosition();
     </script>
 </body>
 </html>
