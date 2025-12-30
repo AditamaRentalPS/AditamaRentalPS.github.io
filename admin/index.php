@@ -19,31 +19,39 @@
             ob_start();
             ?>
             <a href="table/game/tambah.php" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">+ Tambah Game</a>
-            <table class="table-auto w-full bg-white shadow-md rounded">
-                <thead>
-                    <tr class="bg-gray-200">
-                        <th class="px-4 py-2">#</th>
-                        <th class="px-4 py-2">Gambar</th>
-                        <th class="px-4 py-2">Nama Game</th>
-                        <th class="px-4 py-2">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($games as $i => $game): ?>
-                        <tr class="border-t">
-                            <td class="px-4 py-2"><?= $i + 1 ?></td>
-                            <td class="px-4 py-2">
-                                <img src="gambar/<?= $game['gambar'] ?>" width="80">
-                            </td>
-                            <td class="px-4 py-2"><?= htmlspecialchars($game['nama_game']) ?></td>
-                            <td class="px-4 py-2">
-                                <a href="table/game/edit.php?id=<?= $game['id'] ?>" class="text-yellow-500">Edit</a> |
-                                <a href="table/game/hapus.php?id=<?= $game['id'] ?>" class="text-red-500" onclick="return confirm('Yakin?')">Hapus</a>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
+            <table class="min-w-full divide-y divide-gray-700">
+    <thead class="bg-gray-700">
+        <tr>
+            <th class="px-6 py-3 text-left text-xs text-gray-400 uppercase">Customer</th>
+            <th class="px-6 py-3 text-left text-xs text-gray-400 uppercase">Console</th>
+            <th class="px-6 py-3 text-left text-xs text-gray-400 uppercase">Sisa Waktu</th>
+            <th class="px-6 py-3 text-left text-xs text-gray-400 uppercase">Status</th>
+        </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-800">
+        <?php
+        $query_orders = mysqli_query($conn, "SELECT * FROM orders WHERE status = 'Active' OR status = 'Pending'");
+        while($row = mysqli_fetch_assoc($query_orders)):
+            // Logika: end_time diambil dari database
+            $endTime = $row['end_time']; 
+        ?>
+        <tr>
+            <td class="px-6 py-4"><?= $row['customer_name'] ?></td>
+            <td class="px-6 py-4"><?= $row['console_model'] ?></td>
+            <td class="px-6 py-4 font-mono text-lg text-yellow-400">
+                <div class="countdown" data-endtime="<?= $endTime ?>" data-id="<?= $row['order_id'] ?>">
+                    --:--:--
+                </div>
+            </td>
+            <td class="px-6 py-4">
+                <span class="status-badge-<?= $row['order_id'] ?> px-2 py-1 rounded text-xs <?= $row['status'] == 'Active' ? 'bg-green-600' : 'bg-yellow-600' ?>">
+                    <?= $row['status'] ?>
+                </span>
+            </td>
+        </tr>
+        <?php endwhile; ?>
+    </tbody>
+</table>
 
             <?php
             $content = ob_get_clean();
@@ -610,6 +618,52 @@
                         }
                     }
                 </script>
+                <script>
+function updateBilling() {
+    const countdowns = document.querySelectorAll('.countdown');
+    const now = new Date().getTime();
+
+    countdowns.forEach(el => {
+        const endTimeStr = el.getAttribute('data-endtime');
+        if (!endTimeStr) return;
+
+        const endTime = new Date(endTimeStr).getTime();
+        const distance = endTime - now;
+
+        const id = el.getAttribute('data-id');
+        const badge = document.querySelector('.status-badge-' + id);
+
+        if (distance < 0) {
+            el.innerHTML = "WAKTU HABIS";
+            el.classList.replace('text-yellow-400', 'text-red-500');
+            el.classList.add('animate-pulse');
+            
+            // Notifikasi Suara (Opsional)
+            // playAlarm(); 
+            
+            if(badge) {
+                badge.innerHTML = "Finished";
+                badge.classList.replace('bg-green-600', 'bg-red-600');
+            }
+        } else {
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            el.innerHTML = `${hours}j ${minutes}m ${seconds}s`;
+        }
+    });
+}
+
+// Jalankan setiap 1 detik
+setInterval(updateBilling, 1000);
+
+// Fungsi Bunyi Alarm (Masukkan file mp3 alarm di folder project)
+function playAlarm() {
+    let audio = new Audio('alarm.mp3');
+    audio.play();
+}
+</script>
             </body>
 
             </html>
