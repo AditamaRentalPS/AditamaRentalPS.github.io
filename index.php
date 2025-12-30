@@ -340,105 +340,88 @@ $psPackages = [
         </div>
     </footer>
 
-    <script>
-        // === Mobile Menu Toggle ===
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+<script>
+document.addEventListener('DOMContentLoaded', () => {
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+  // =========================
+  // MOBILE MENU TOGGLE
+  // =========================
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-        // === Rental Form Price Calculation ===
-        const rentalForm = document.getElementById('rental-form');
-        const packageSelect = document.getElementById('package');
-        const durationTypeSelect = document.getElementById('duration-type');
-        const durationInput = document.getElementById('duration');
-        const durationUnitSpan = document.getElementById('duration-unit');
-        const totalPriceSpan = document.getElementById('total-price');
-        const hiddenTotalPriceInput = document.getElementById('hidden-total-price'); // Hidden input untuk total harga
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
+  // =========================
+  // RENTAL FORM PRICE
+  // =========================
+  const rentalForm = document.getElementById('rental-form');
+  const packageSelect = document.getElementById('package');
+  const durationTypeSelect = document.getElementById('duration-type');
+  const durationInput = document.getElementById('duration');
+  const durationUnitSpan = document.getElementById('duration-unit');
+  const totalPriceSpan = document.getElementById('total-price');
+  const hiddenTotalPriceInput = document.getElementById('hidden-total-price');
 
-        // Fungsi untuk menghitung dan memperbarui total harga
-        function calculateTotalPrice() {
-            const selectedOption = packageSelect.options[packageSelect.selectedIndex];
-            // Pastikan kita mendapatkan angka dari data-set
-            const dailyRate = parseFloat(selectedOption.dataset.dailyRate || 0);
-            const hourlyRate = parseFloat(selectedOption.dataset.hourlyRate || 0);
-            const duration = parseFloat(durationInput.value || 0);
-            const durationType = durationTypeSelect.value;
+  function calculateTotalPrice() {
+    if (!packageSelect) return;
 
-            let totalPrice = 0;
+    const selectedOption = packageSelect.options[packageSelect.selectedIndex];
+    const dailyRate = parseFloat(selectedOption.dataset.dailyRate || 0);
+    const hourlyRate = parseFloat(selectedOption.dataset.hourlyRate || 0);
+    const duration = parseFloat(durationInput.value || 0);
+    const durationType = durationTypeSelect.value;
 
-            if (duration > 0) {
-                if (durationType === 'hari') { // Sesuaikan dengan value di option HTML
-                    totalPrice = dailyRate * duration;
-                } else if (durationType === 'jam') { // Sesuaikan dengan value di option HTML
-                    totalPrice = hourlyRate * duration;
-                }
-            }
-            totalPriceSpan.textContent = `Rp${totalPrice.toLocaleString('id-ID')}`;
-            hiddenTotalPriceInput.value = totalPrice; // Update nilai hidden input
-        }
+    let totalPrice = 0;
 
-        // Event listeners untuk perhitungan harga
-        packageSelect.addEventListener('change', calculateTotalPrice);
-        durationTypeSelect.addEventListener('change', () => {
-            durationUnitSpan.textContent = durationTypeSelect.value === 'hari' ? 'hari' : 'jam'; // Sesuaikan unit
-            durationInput.placeholder = durationTypeSelect.value === 'hari' ? 'Masukkan durasi sewa dalam hari' : 'Masukkan durasi sewa dalam jam';
-            calculateTotalPrice(); // Hitung ulang saat jenis durasi berubah
-        });
-        durationInput.addEventListener('input', calculateTotalPrice); // Hitung ulang saat durasi input berubah
+    if (duration > 0) {
+      totalPrice = durationType === 'hari'
+        ? dailyRate * duration
+        : hourlyRate * duration;
+    }
 
-        // Panggil perhitungan awal saat halaman dimuat
-        calculateTotalPrice();
+    totalPriceSpan.textContent = `Rp${totalPrice.toLocaleString('id-ID')}`;
+    hiddenTotalPriceInput.value = totalPrice;
+  }
 
+  if (packageSelect && durationTypeSelect && durationInput) {
+    packageSelect.addEventListener('change', calculateTotalPrice);
+    durationTypeSelect.addEventListener('change', () => {
+      durationUnitSpan.textContent = durationTypeSelect.value;
+      calculateTotalPrice();
+    });
+    durationInput.addEventListener('input', calculateTotalPrice);
+    calculateTotalPrice();
+  }
 
-        // === Rental Form Submission (Sekarang hanya validasi HTML5) ===
-        rentalForm.addEventListener('submit', (e) => {
-            calculateTotalPrice();
-        });
+  if (rentalForm) {
+    rentalForm.addEventListener('submit', calculateTotalPrice);
+  }
 
+  // =========================
+  // GAME SLIDESHOW (FINAL)
+  // =========================
+  const container = document.getElementById('game-slides-container');
 
-        // === Game Slideshow functionality ===
-        const gameSlidesContainer = document.getElementById('game-slides-container');
-        const prevSlideBtn = document.getElementById('prev-slide');
-        const nextSlideBtn = document.getElementById('next-slide');
-        // Pastikan gameSlidesContainer.children hanya menghitung elemen yang ingin di-slide
-        const totalSlides = gameSlidesContainer.children.length;
-        let currentIndex = 0;
+  if (!container) {
+    console.warn('Slideshow container tidak ditemukan');
+    return;
+  }
 
-        function updateSlidePosition() {
-            gameSlidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
-        }
+  const slides = container.children;
+  const totalSlides = slides.length;
+  let currentIndex = 0;
 
-        prevSlideBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-            updateSlidePosition();
-        });
+  setInterval(() => {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }, 3500);
 
-        nextSlideBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlidePosition();
-        });
+});
+</script>
 
-        // Auto slide setiap 5 detik
-        let autoSlideInterval = setInterval(() => {
-            currentIndex = (currentIndex + 1) % totalSlides;
-            updateSlidePosition();
-        }, 5000);
-        
-        document.addEventListener('DOMContentLoaded', () => {
-        const container = document.getElementById('game-slides-container');
-        const slides = container.children;
-        let index = 0;
-        const total = slides.length;
-
-        setInterval(() => {
-            index = (index + 1) % total;
-            container.style.transform = `translateX(-${index * 100}%)`;
-        }, 3500);
-        });
-    </script>
 </body>
 </html>
