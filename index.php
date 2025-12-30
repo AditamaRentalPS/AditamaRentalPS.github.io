@@ -101,7 +101,7 @@ $psPackages = [
         <h2 class="text-3xl font-bold mb-8 text-white text-center">Paket Sewa PlayStations</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 5 console with DualSense controller on white background" class="w-full h-56 object-cover" height="225" src="https://storage.googleapis.com/a1aa/image/8477b33f-e7bd-4eba-5014-3c5c7ac299bf.jpg" width="400"/>
+                <img alt="PlayStation 5 console with DualSense controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps5.jpg" width="400"/>
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-semibold mb-2">PS5 Standard Edition</h3>
                     <p class="text-gray-400 text-sm mb-4 flex-grow">Sewa konsol PlayStation 5 dengan performa terbaik dan grafis memukau.</p>
@@ -114,7 +114,7 @@ $psPackages = [
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 4 Pro console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="https://storage.googleapis.com/a1aa/image/7b6d7592-eca3-4ffb-fc1b-bf2d378ed009.jpg" width="400"/>
+                <img alt="PlayStation 4 Pro console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps4.jpg" width="400"/>
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-semibold mb-2">PS4 Pro Edition</h3>
                     <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 4 Pro dengan performa tinggi dan banyak game populer.</p>
@@ -127,7 +127,7 @@ $psPackages = [
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 3 console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="ps 3.jpg" width="400"/>
+                <img alt="PlayStation 3 console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps3.jpg" width="400"/>
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-semibold mb-2">PS3 Classic Edition</h3>
                     <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 3 dengan koleksi game klasik dan nostalgia.</p>
@@ -142,77 +142,86 @@ $psPackages = [
         </div>
     </section>
 
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="game-slideshow">
-        <h2 class="text-3xl font-bold mb-4 text-white text-center">Game Populer untuk Disewa</h2>
-        <div class="relative max-w-4xl mx-auto">
-            <div class="overflow-hidden rounded-lg shadow-lg">
-                <div class="flex transition-transform duration-500 ease-in-out" id="game-slides-container" style="transform: translateX(0%);">
-                    <div class="min-w-full flex-shrink-0 game-item">
-                        <img alt="Cover art of Horizon Forbidden West game showing a female warrior in a lush forest with robotic creatures" class="w-full h-64 object-cover" height="256" src="hor.avif" width="1024"/>
-                        <div class="p-4 bg-gray-800 text-white text-center">
-                            <h3 class="text-xl font-semibold game-title">Horizon Forbidden West</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full flex-shrink-0 game-item">
-                        <img alt="Cover art of Elden Ring game showing a warrior standing on a cliff with a vast fantasy landscape" class="w-full h-64 object-cover" height="256" src="elden ring.avif" width="1024"/>
-                        <div class="p-4 bg-gray-800 text-white text-center">
-                            <h3 class="text-xl font-semibold game-title">Elden Ring</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full flex-shrink-0 game-item">
-                        <img alt="Cover art of Returnal game showing a female astronaut in a hostile alien environment" class="w-full h-64 object-cover" height="256" src="GTA.jpeg" width="1024"/>
-                        <div class="p-4 bg-gray-800 text-white text-center">
-                            <h3 class="text-xl font-semibold game-title">Gta 5</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full flex-shrink-0 game-item">
-                        <img alt="Cover art of Gran Turismo 7 game showing a red sports car racing on a coastal highway" class="w-full h-64 object-cover" height="256" src="https://storage.googleapis.com/a1aa/image/31c44947-dc39-4305-c23c-c8e2fc684224.jpg" width="1024"/>
-                        <div class="p-4 bg-gray-800 text-white text-center">
-                            <h3 class="text-xl font-semibold game-title">Gran Turismo 7</h3>
-                        </div>
-                    </div>
-                    <div class="min-w-full flex-shrink-0 game-item">
-                        <img alt="Cover art of God of War Ragnarok game showing Kratos and Atreus in a snowy landscape" class="w-full h-64 object-cover" height="256" src="gow2.jpg" width="1024"/>
-                        <div class="p-4 bg-gray-800 text-white text-center">
-                            <h3 class="text-xl font-semibold game-title">God of War Ragnarok</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <button aria-label="Previous slide" class="absolute top-1/2 left-2 -translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white rounded-full p-2 shadow-lg focus:outline-none" id="prev-slide">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-            <button aria-label="Next slide" class="absolute top-1/2 right-2 -translate-y-1/2 bg-blue-700 hover:bg-blue-800 text-white rounded-full p-2 shadow-lg focus:outline-none" id="next-slide">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-        </div>
-    </section>
+   <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="game-slideshow">
+    <h2 class="text-3xl font-bold mb-4 text-white text-center">
+        Game Populer untuk Disewa
+    </h2>
 
-    <section class="bg-gray-800 py-16 px-6 md:px-12" id="how-it-works">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-12 text-white">Cara Sewa PlayStation</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-blue-700 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-white text-2xl font-bold">1</div>
-                    <img alt="Icon of a calendar and clock representing booking schedule" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/a238e365-745e-46a3-651a-bb8f701567e8.jpg" width="80"/>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Pilih Paket Sewa</h3>
-                    <p class="text-gray-400 max-w-xs">Tentukan paket PlayStation yang ingin Anda sewa sesuai kebutuhan.</p>
+    <div class="relative max-w-4xl mx-auto">
+        <div class="overflow-hidden rounded-lg shadow-lg">
+            <div class="flex transition-transform duration-500 ease-in-out" id="game-slides-container">
+
+                <!-- Call of Duty -->
+                <div class="min-w-full flex-shrink-0 game-item">
+                    <img 
+                        src="assets/images/game/call_of_duty_aw.jpeg"
+                        alt="Call of Duty"
+                        class="w-full h-64 object-cover"
+                        onerror="this.src='assets/images/game/no-image.png'"
+                    >
+                    <div class="p-4 bg-gray-800 text-white text-center">
+                        <h3 class="text-xl font-semibold game-title">Call of Duty</h3>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-blue-700 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-white text-2xl font-bold">2</div>
-                    <img alt="Icon of a form and pen representing filling rental form" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/96c15051-6e55-4c0a-3d52-20e5b3e386e2.jpg" width="80"/>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Isi Formulir</h3>
-                    <p class="text-gray-400 max-w-xs">Lengkapi data diri dan jadwal sewa melalui formulir pemesanan.</p>
+
+                <!-- God of War Ragnarok -->
+                <div class="min-w-full flex-shrink-0 game-item">
+                    <img 
+                        src="assets/images/game/god-of-war-ragnarok.jpg"
+                        alt="God of War Ragnarok"
+                        class="w-full h-64 object-cover"
+                        onerror="this.src='assets/images/game/no-image.png'"
+                    >
+                    <div class="p-4 bg-gray-800 text-white text-center">
+                        <h3 class="text-xl font-semibold game-title">
+                            God of War Ragnarok
+                        </h3>
+                    </div>
                 </div>
-                <div class="flex flex-col items-center text-center">
-                    <div class="bg-blue-700 rounded-full w-16 h-16 flex items-center justify-center mb-6 text-white text-2xl font-bold">3</div>
-                    <img alt="Icon of delivery truck representing delivery and pickup service" class="w-20 h-20 mb-4" height="80" src="https://storage.googleapis.com/a1aa/image/39a9dd3c-824e-4fe8-388b-34db70650c70.jpg" width="80"/>
-                    <h3 class="text-xl font-semibold mb-2 text-white">Terima &amp; Mainkan</h3>
-                    <p class="text-gray-400 max-w-xs">Konsol akan diantar ke alamat Anda, siap untuk dimainkan.</p>
+
+                <!-- Elden Ring -->
+                <div class="min-w-full flex-shrink-0 game-item">
+                    <img 
+                        src="assets/images/game/elden-ring.jpg"
+                        alt="Elden Ring"
+                        class="w-full h-64 object-cover"
+                        onerror="this.src='assets/images/game/no-image.png'"
+                    >
+                    <div class="p-4 bg-gray-800 text-white text-center">
+                        <h3 class="text-xl font-semibold game-title">Elden Ring</h3>
+                    </div>
                 </div>
+
+                <!-- PES -->
+                <div class="min-w-full flex-shrink-0 game-item">
+                    <img 
+                        src="assets/images/game/pes.jpg"
+                        alt="PES"
+                        class="w-full h-64 object-cover"
+                        onerror="this.src='assets/images/game/no-image.png'"
+                    >
+                    <div class="p-4 bg-gray-800 text-white text-center">
+                        <h3 class="text-xl font-semibold game-title">PES</h3>
+                    </div>
+                </div>
+
+                <!-- GTA 5 -->
+                <div class="min-w-full flex-shrink-0 game-item">
+                    <img 
+                        src="assets/images/game/gta-v.jpg"
+                        alt="GTA 5"
+                        class="w-full h-64 object-cover"
+                        onerror="this.src='assets/images/game/no-image.png'"
+                    >
+                    <div class="p-4 bg-gray-800 text-white text-center">
+                        <h3 class="text-xl font-semibold game-title">GTA 5</h3>
+                    </div>
+                </div>
+
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="testimonials">
         <h2 class="text-3xl font-bold mb-8 text-white text-center">Apa Kata Pelanggan Kami</h2>

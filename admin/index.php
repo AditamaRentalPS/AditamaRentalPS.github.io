@@ -479,7 +479,7 @@
                             description: 'Sewa konsol PlayStation 5 dengan performa terbaik dan grafis memukau.',
                             daily_rate: 150000,
                             hourly_rate: 25000,
-                            image_url: 'https://storage.googleapis.com/a1aa/image/8477b33f-e7bd-4eba-5014-3c5c7ac299bf.jpg',
+                            image_url: 'hassets/images/game/ps5.jpg',
                             is_available_for_rent: true
                         },
                         {
@@ -488,7 +488,7 @@
                             description: 'Konsol PlayStation 4 Pro dengan performa tinggi dan banyak game populer.',
                             daily_rate: 100000,
                             hourly_rate: 15000,
-                            image_url: 'https://storage.googleapis.com/a1aa/image/7b6d7592-eca3-4ffb-fc1b-bf2d378ed009.jpg',
+                            image_url: 'assets/images/game/ps4.jpg',
                             is_available_for_rent: true
                         },
                         {
@@ -497,9 +497,10 @@
                             description: 'Konsol PlayStation 3 dengan koleksi game klasik dan nostalgia.',
                             daily_rate: 80000,
                             hourly_rate: 10000,
-                            image_url: 'ps 3.jpg',
+                            image_url: 'assets/images/game/ps3.jpg',
                             is_available_for_rent: false
                         }
+
                     ];
                     let nextConsoleId = 4;
 
