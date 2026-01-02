@@ -224,9 +224,8 @@ $psPackages = [
     <div id="game-slides-container"
       class="flex transition-transform duration-700 ease-in-out">
 
-      <!-- Call of Duty -->
       <div class="min-w-full game-item relative">
-        <img src="assets/images/game/call_of_duty_aw.jpeg"
+        <img src="assets/images/games/call_of_duty_aw.png"
              class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
              onerror="this.src='assets/images/game/no-image.png'">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
@@ -234,19 +233,34 @@ $psPackages = [
         </div>
       </div>
 
-      <!-- God of War -->
       <div class="min-w-full game-item relative">
-        <img src="assets/images/game/god-of-war-ragnarok.jpg"
+        <img src="assets/images/games/elder_ring.png"
+             class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105"
+             onerror="this.src='assets/images/game/no-image.png'">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">Elden Ring</h3>
+        </div>
+      </div>
+
+      <div class="min-w-full game-item relative">
+        <img src="assets/images/games/pes.png"
+             class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">PES</h3>
+        </div>
+      </div>
+
+       <div class="min-w-full game-item relative">
+        <img src="assets/images/games/god-of-war-ragnarok.png"
              class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">God of War Ragnarok</h3>
         </div>
       </div>
 
-      <!-- GTA 5 -->
       <div class="min-w-full game-item relative">
        <img
-        src="assets/images/game/gta-v.jpg"
+        src="assets/images/games/gta-v.png"
         class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">GTA 5</h3>
