@@ -97,6 +97,107 @@ $psPackages = [
         </div>
     </section>
 
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12 page-animate" id="game-slideshow">
+    <h2 class="text-3xl font-bold mb-4 text-white text-center">
+        Game Populer untuk Disewa
+    </h2>
+
+   <div class="relative max-w-5xl mx-auto group">
+
+  <!-- Tombol Prev -->
+  <button id="prevSlide"
+    class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-3 rounded-full z-10">
+    ‹
+  </button>
+
+  <!-- Tombol Next -->
+  <button id="nextSlide"
+    class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-3 rounded-full z-10">
+    ›
+  </button>
+
+  <div class="overflow-hidden rounded-xl shadow-xl bg-black">
+    <div id="game-slides-container"
+      class="flex transition-transform duration-700 ease-in-out">
+
+      <div class="min-w-full game-item relative">
+        <img src="assets/images/game/call_of_duty_aw.png"
+             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
+             onerror="this.src='assets/images/game/call_of_duty_aw.png'">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">Call of Duty</h3>
+        </div>
+      </div>
+
+      <div class="min-w-full game-item relative">
+        <img src="assets/images/game/elder_ring.png"
+             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
+             onerror="this.src='assets/images/game/elder_ring.png'">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">Elden Ring</h3>
+        </div>
+      </div>
+
+      <div class="min-w-full game-item relative">
+        <img src="assets/images/game/pes.png"
+             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
+             onerror="this.src='assets/images/game/pes.png'">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">PES</h3>
+        </div>
+      </div>
+
+       <div class="min-w-full game-item relative">
+        <img src="assets/images/game/god-of-war-ragnarok.png"
+             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">God of War Ragnarok</h3>
+        </div>
+      </div>
+
+      <div class="min-w-full game-item relative">
+       <img
+        src="assets/images/game/gta-v.png"
+        class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
+        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
+          <h3 class="text-xl font-semibold">GTA 5</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<section class="bg-gray-900 py-14 px-6 md:px-12 page-animate">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+    <div>
+      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M9 12l2 2 4-4"/>
+        <circle cx="12" cy="12" r="10"/>
+      </svg>
+      <p class="font-semibold">Unit Dicek Sebelum Dikirim</p>
+    </div>
+
+    <div>
+      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M18 10a6 6 0 1 1-12 0"/>
+        <path d="M12 14v7"/>
+      </svg>
+      <p class="font-semibold">Customer Service Aktif</p>
+    </div>
+
+    <div>
+      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path d="M12 3l7 4v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>
+      </svg>
+      <p class="font-semibold">Aman & Terpercaya</p>
+    </div>
+
+  </div>
+</section>
+
+
     <section id="how-it-works" class="bg-gray-800 py-16 px-6 md:px-12">
   <div class="max-w-7xl mx-auto text-center">
     <h2 class="text-3xl font-bold mb-4">Cara Sewa PlayStation</h2>
@@ -190,120 +291,7 @@ $psPackages = [
         </div>
     </section>
 
-    <section class="bg-gradient-to-r from-blue-800 to-blue-600 py-14 text-center">
-  <h2 class="text-3xl font-bold mb-4">Siap Main Hari Ini?</h2>
-  <p class="mb-6 text-blue-100">
-    Sewa PlayStation sekarang tanpa harus membeli konsol.
-  </p>
-  <a href="#contact" class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition">
-    Sewa Sekarang
-  </a>
-</section>
-
-
-<section class="max-w-7xl mx-auto px-6 md:px-12 py-12 page-animate" id="game-slideshow">
-    <h2 class="text-3xl font-bold mb-4 text-white text-center">
-        Game Populer untuk Disewa
-    </h2>
-
-   <div class="relative max-w-5xl mx-auto group">
-
-  <!-- Tombol Prev -->
-  <button id="prevSlide"
-    class="absolute left-0 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-3 rounded-full z-10">
-    ‹
-  </button>
-
-  <!-- Tombol Next -->
-  <button id="nextSlide"
-    class="absolute right-0 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black text-white p-3 rounded-full z-10">
-    ›
-  </button>
-
-  <div class="overflow-hidden rounded-xl shadow-xl bg-black">
-    <div id="game-slides-container"
-      class="flex transition-transform duration-700 ease-in-out">
-
-      <div class="min-w-full game-item relative">
-        <img src="assets/images/game/call_of_duty_aw.png"
-             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/call_of_duty_aw.png'">
-        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
-          <h3 class="text-xl font-semibold">Call of Duty</h3>
-        </div>
-      </div>
-
-      <div class="min-w-full game-item relative">
-        <img src="assets/images/game/elder_ring.png"
-             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/elder_ring.png'">
-        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
-          <h3 class="text-xl font-semibold">Elden Ring</h3>
-        </div>
-      </div>
-
-      <div class="min-w-full game-item relative">
-        <img src="assets/images/game/pes.png"
-             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/pes.png'">
-        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
-          <h3 class="text-xl font-semibold">PES</h3>
-        </div>
-      </div>
-
-       <div class="min-w-full game-item relative">
-        <img src="assets/images/game/god-of-war-ragnarok.png"
-             class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
-          <h3 class="text-xl font-semibold">God of War Ragnarok</h3>
-        </div>
-      </div>
-
-      <div class="min-w-full game-item relative">
-       <img
-        src="assets/images/game/gta-v.png"
-        class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
-        <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
-          <h3 class="text-xl font-semibold">GTA 5</h3>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-</section>
-
-<section class="bg-gray-900 py-14 px-6 md:px-12 page-animate">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-
-    <div>
-      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M9 12l2 2 4-4"/>
-        <circle cx="12" cy="12" r="10"/>
-      </svg>
-      <p class="font-semibold">Unit Dicek Sebelum Dikirim</p>
-    </div>
-
-    <div>
-      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M18 10a6 6 0 1 1-12 0"/>
-        <path d="M12 14v7"/>
-      </svg>
-      <p class="font-semibold">Customer Service Aktif</p>
-    </div>
-
-    <div>
-      <svg class="mx-auto w-10 h-10 text-green-400 mb-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path d="M12 3l7 4v6c0 5-3.5 8-7 9-3.5-1-7-4-7-9V7z"/>
-      </svg>
-      <p class="font-semibold">Aman & Terpercaya</p>
-    </div>
-
-  </div>
-</section>
-
-
+    </section>
     <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="testimonials">
         <h2 class="text-3xl font-bold mb-8 text-white text-center">Apa Kata Pelanggan Kami</h2>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -321,6 +309,17 @@ $psPackages = [
             </blockquote>
         </div>
     </section>
+
+
+    <section class="bg-gradient-to-r from-blue-800 to-blue-600 py-14 text-center">
+  <h2 class="text-3xl font-bold mb-4">Siap Main Hari Ini?</h2>
+  <p class="mb-6 text-blue-100">
+    Sewa PlayStation sekarang tanpa harus membeli konsol.
+  </p>
+  <a href="#contact" class="inline-block bg-white text-blue-700 font-semibold px-8 py-3 rounded-lg hover:bg-gray-100 transition">
+    Sewa Sekarang
+  </a>
+</section>
 
     <section class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 md:px-12" id="contact">
         <div class="max-w-3xl mx-auto text-white">
