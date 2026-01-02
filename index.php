@@ -274,23 +274,23 @@ $psPackages = [
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 3 console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps3.jpg" width="400"/>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">PS3 Classic Edition</h3>
-                    <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 3 dengan koleksi game klasik dan nostalgia.</p>
-                    <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="80000">Mulai dari Rp80.000 / hari</p>
-                    <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="10000">Atau Rp10.000 / jam</p>
-                    <div class="text-sm font-semibold mb-3">
-                    <a
-                      href="#contact"
-                      class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
-                      data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
-                    >
-                      Pesan
-                    </a>                 
-                 </div>
+            <img alt="PlayStation 3 console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps3.jpg" width="400"/>
+            <div class="p-6 flex flex-col flex-grow">
+                <h3 class="text-xl font-semibold mb-2">PS3 Classic Edition</h3>
+                <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 3 dengan koleksi game klasik dan nostalgia.</p>
+                <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="80000">Mulai dari Rp80.000 / hari</p>
+                <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="10000">Atau Rp10.000 / jam</p>
+                
+                <div class="text-sm font-semibold mb-3">
+                    <span class="text-red-400"><i class="fas fa-times-circle"></i> Stok Habis</span>
                 </div>
-            </article>
+
+                <a href="javascript:void(0)" 
+                  class="inline-block bg-gray-600 cursor-not-allowed px-4 py-2 rounded text-center font-semibold text-white">
+                    pesan
+                </a>
+            </div>
+        </article>
         </div>
     </section>
 
