@@ -289,7 +289,6 @@ $psPackages = [
                       Pesan
                     </a>                 
                  </div>
-                    <a class="mt-auto inline-block bg-gray-600 cursor-not-allowed text-white font-semibold px-6 py-3 rounded-md transition text-center">Stok Habis</a>
                 </div>
             </article>
         </div>
