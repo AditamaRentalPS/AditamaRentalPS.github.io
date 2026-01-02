@@ -113,5 +113,28 @@ document.getElementById('logo').addEventListener('click', () => {
   }
 });
 
+// ===============================
+// PILIH PAKET → AUTO ISI FORM
+// ===============================
+document.querySelectorAll('.sewa-btn').forEach(button => {
+  button.addEventListener('click', function () {
+    const psType = this.dataset.ps;
+
+    // scroll ke section form
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // tunggu animasi / form muncul
+    setTimeout(() => {
+      const psInput = document.getElementById('jenis_ps');
+      if (psInput) {
+        psInput.value = psType;
+      }
+    }, 300);
+  });
+});
+
 
 });

@@ -245,8 +245,14 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 5 unit</span>
                     </div>
-                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Pesan</a>
-                </div>
+                      <a
+                        href="#contact"
+                        class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
+                        data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
+                      >
+                        Pesan
+                      </a>
+              </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
                 <img alt="PlayStation 4 Pro console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps4.jpg" width="400"/>
@@ -258,7 +264,13 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 3 unit</span>
                     </div>
-                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Pesan</a>
+                        <a
+                          href="#contact"
+                          class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
+                          data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
+                        >
+                          Pesan
+                        </a>
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
@@ -269,8 +281,14 @@ $psPackages = [
                     <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="80000">Mulai dari Rp80.000 / hari</p>
                     <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="10000">Atau Rp10.000 / jam</p>
                     <div class="text-sm font-semibold mb-3">
-                        <span class="text-red-400"><i class="fas fa-times-circle"></i> Stok Habis</span>
-                    </div>
+                    <a
+                      href="#contact"
+                      class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
+                      data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
+                    >
+                      Pesan
+                    </a>                 
+                 </div>
                     <a class="mt-auto inline-block bg-gray-600 cursor-not-allowed text-white font-semibold px-6 py-3 rounded-md transition text-center">Stok Habis</a>
                 </div>
             </article>
@@ -310,66 +328,176 @@ $psPackages = [
 
 </section>
 
-    <section class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 md:px-12 hidden" id="contact">
-        <div class="max-w-3xl mx-auto text-white">
-            <h2 class="text-4xl font-bold mb-6 text-center">Hubungi Kami</h2>
+    <section
+  id="contact"
+  class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 md:px-12 hidden"
+>
+  <div class="max-w-3xl mx-auto text-white">
+    <h2 class="text-4xl font-bold mb-6 text-center">
+      Siap Main Hari Ini?
+    </h2>
+    <p class="text-center mb-8 text-blue-100">
+      Sewa PlayStation sekarang tanpa harus membeli konsol.
+    </p>
 
-            <?php if (isset($_SESSION['form_message'])): ?>
-                <div class="mb-4 p-3 rounded <?php echo ($_SESSION['form_message_type'] == 'success') ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'; ?>">
-                    <?php echo htmlspecialchars($_SESSION['form_message']); ?>
-                </div>
-                <?php
-                // Hapus pesan dari session setelah ditampilkan
-                unset($_SESSION['form_message']);
-                unset($_SESSION['form_message_type']);
-                ?>
-            <?php endif; ?>
+    <form
+      id="rental-form"
+      class="space-y-6"
+      method="POST"
+      action="process_order.php"
+      novalidate
+    >
+      <!-- Nama -->
+      <div>
+        <label class="block mb-2 font-semibold" for="name">
+          Nama Lengkap
+        </label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          placeholder="Masukkan nama lengkap Anda"
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
 
-            <form class="space-y-6" id="rental-form" method="POST" action="process_order.php" novalidate>
-                <div>
-                    <label class="block mb-2 font-semibold" for="name">Nama Lengkap</label>
-                    <input class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required type="text"/>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="email">Email</label>
-                    <input class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="email" name="email" placeholder="Masukkan email Anda" required type="email"/>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="phone">Nomor Telepon</label>
-                    <input class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda" required type="tel"/>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="package">Pilih Paket Sewa</label>
-                    <select class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="package" name="package" required>
-                        <option disabled selected value="">-- Pilih Paket --</option>
-                        <option value="ps5_standard" data-daily-rate="150000" data-hourly-rate="25000">PS5 Standard Edition</option>
-                        <option value="ps4_pro" data-daily-rate="100000" data-hourly-rate="15000">PS4 Pro Edition</option>
-                        <option value="ps3_classic" data-daily-rate="80000" data-hourly-rate="10000">PS3 Classic Edition</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="rental-date">Tanggal Mulai Sewa</label>
-                    <input class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="rental-date" name="rental_date" required type="date"/>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="duration-type">Jenis Durasi</label>
-                    <select class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="duration-type" name="duration_type" required>
-                        <option value="hari">Hari</option>
-                        <option value="jam">Jam</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="block mb-2 font-semibold" for="duration">Durasi Sewa (<span id="duration-unit">hari</span>)</label>
-                    <input class="w-full rounded-md px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500" id="duration" min="1" name="duration" placeholder="Masukkan durasi sewa" required type="number"/>
-                </div>
-                <div class="text-xl font-bold text-white text-center">
-                    Total Harga: <span id="total-price">Rp0</span>
-                    <input type="hidden" id="hidden-total-price" name="total_price_hidden" value="0">
-                </div>
-                <button class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition" type="submit">Kirim Pesanan</button>
-            </form>
-        </div>
-    </section>
+      <!-- Email -->
+      <div>
+        <label class="block mb-2 font-semibold" for="email">
+          Email
+        </label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          placeholder="Masukkan email Anda"
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Telepon -->
+      <div>
+        <label class="block mb-2 font-semibold" for="phone">
+          Nomor Telepon
+        </label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          required
+          placeholder="Masukkan nomor telepon Anda"
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Paket -->
+      <div>
+        <label class="block mb-2 font-semibold" for="package">
+          Pilih Paket Sewa
+        </label>
+        <select
+          id="package"
+          name="package"
+          required
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="" disabled selected>
+            -- Pilih Paket --
+          </option>
+          <option
+            value="ps5_standard"
+            data-daily-rate="150000"
+            data-hourly-rate="25000"
+          >
+            PS5 Standard Edition
+          </option>
+          <option
+            value="ps4_pro"
+            data-daily-rate="100000"
+            data-hourly-rate="15000"
+          >
+            PS4 Pro Edition
+          </option>
+          <option
+            value="ps3_classic"
+            data-daily-rate="80000"
+            data-hourly-rate="10000"
+          >
+            PS3 Classic Edition
+          </option>
+        </select>
+      </div>
+
+      <!-- Tanggal -->
+      <div>
+        <label class="block mb-2 font-semibold" for="rental-date">
+          Tanggal Mulai Sewa
+        </label>
+        <input
+          id="rental-date"
+          name="rental_date"
+          type="date"
+          required
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Jenis Durasi -->
+      <div>
+        <label class="block mb-2 font-semibold" for="duration-type">
+          Jenis Durasi
+        </label>
+        <select
+          id="duration-type"
+          name="duration_type"
+          required
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        >
+          <option value="hari">Hari</option>
+          <option value="jam">Jam</option>
+        </select>
+      </div>
+
+      <!-- Durasi -->
+      <div>
+        <label class="block mb-2 font-semibold" for="duration">
+          Durasi Sewa (<span id="duration-unit">hari</span>)
+        </label>
+        <input
+          id="duration"
+          name="duration"
+          type="number"
+          min="1"
+          required
+          placeholder="Masukkan durasi sewa"
+          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <!-- Total Harga -->
+      <div class="text-xl font-bold text-center">
+        Total Harga:
+        <span id="total-price">Rp0</span>
+        <input
+          type="hidden"
+          id="hidden-total-price"
+          name="total_price_hidden"
+          value="0"
+        />
+      </div>
+
+      <!-- Submit -->
+      <button
+        type="submit"
+        class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition"
+      >
+        Sewa Sekarang
+      </button>
+    </form>
+  </div>
+</section>
 
     <footer class="bg-gray-900 border-t border-gray-700 py-10 px-6 md:px-12 mt-12">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 text-gray-400 text-sm">
