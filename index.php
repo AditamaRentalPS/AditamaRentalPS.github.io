@@ -220,7 +220,7 @@ $psPackages = [
     ›
   </button>
 
-  <div class="overflow-hidden rounded-xl shadow-xl">
+  <div class="overflow-hidden rounded-xl shadow-xl bg-black">
     <div id="game-slides-container"
       class="flex transition-transform duration-700 ease-in-out">
 
@@ -245,8 +245,9 @@ $psPackages = [
 
       <!-- GTA 5 -->
       <div class="min-w-full game-item relative">
-        <img src="assets/images/game/gta-v.jpg"
-             class="w-full h-72 object-cover transition-transform duration-500 group-hover:scale-105">
+       <img
+        src="assets/images/game/gta-v.jpg"
+        class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">GTA 5</h3>
         </div>
