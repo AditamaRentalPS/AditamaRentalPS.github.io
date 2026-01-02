@@ -233,3 +233,9 @@ footer a:hover {
   opacity: 1;
   transform: translateX(0);
 }
+
+ .game-item img {
+            width: 100%;
+            height: 256px; /* Tinggi tetap */
+            object-fit: cover; /* Pastikan gambar memenuhi area tanpa terdistorsi */
+        }

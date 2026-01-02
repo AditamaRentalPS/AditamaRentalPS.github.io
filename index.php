@@ -27,17 +27,7 @@ $psPackages = [
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
-    <style>
-        body {
-            font-family: 'Montserrat', sans-serif;
-        }
-        /* Style untuk menyesuaikan gambar pada bagian game slideshow */
-        .game-item img {
-            width: 100%;
-            height: 256px; /* Tinggi tetap */
-            object-fit: cover; /* Pastikan gambar memenuhi area tanpa terdistorsi */
-        }
-    </style>
+    <link href="assets/css/style.css" rel="stylesheet"/>
 </head>
 <body class="bg-gray-900 text-white relative">
 
