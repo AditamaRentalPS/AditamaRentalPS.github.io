@@ -40,35 +40,13 @@ $psPackages = [
     </style>
 </head>
 <body class="bg-gray-900 text-white relative">
-
-    <div class="bg-black text-gray-400 text-xs py-1 px-4 flex justify-between items-center">
-        <div class="flex space-x-4">
-            <a class="hover:text-white" href="#">Indonesia</a>
-            <a class="hover:text-white" href="#">Support</a>
-            <?php if ($isLoggedIn): ?>
-                <a class="hover:text-white" href="logout.php">Logout</a>
-            <?php else: ?>
-                <a class="hover:text-white" href="login.php">Sign In</a> <a class="hover:text-white" href="register.php">Register</a>
-            <?php endif; ?>
-        </div>
-        <div class="flex space-x-4">
-            <a class="hover:text-white" href="#"><i class="fab fa-facebook-f"></i></a>
-            <a class="hover:text-white" href="#"><i class="fab fa-twitter"></i></a>
-            <a class="hover:text-white" href="#"><i class="fab fa-youtube"></i></a>
-            <a class="hover:text-white" href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-
     <header class="bg-gray-900 sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
             <a class="flex items-center space-x-2" href="index.php">
                 <img alt="Logo PS Rental Indonesia with a PlayStation controller icon and text" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/346efd31-3ca4-4b96-8bd3-0f0864a4d339.jpg" width="120"/>
             </a>
             <nav class="hidden md:flex space-x-8 font-semibold text-gray-300">
-                <a class="hover:text-white transition" href="#rental-packages">Paket Sewa</a>
                 <a class="hover:text-white transition" href="#how-it-works">Cara Sewa</a>
-                <a class="hover:text-white transition" href="#game-slideshow">Game Populer</a>
-                <a class="hover:text-white transition" href="#testimonials">Testimoni</a>
                 <a class="hover:text-white transition" href="#contact">Kontak</a>
             </nav>
             <div class="md:hidden">
@@ -92,7 +70,6 @@ $psPackages = [
             <div class="max-w-xl text-white">
                 <h1 class="text-4xl md:text-6xl font-extrabold mb-4 leading-tight">Sewa PlayStation Mudah dan Terjangkau</h1>
                 <p class="text-lg md:text-xl mb-6">Nikmati pengalaman bermain game terbaik tanpa harus membeli konsol.</p>
-                <a class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition" href="#rental-packages">Lihat Paket Sewa</a>
             </div>
         </div>
     </section>
