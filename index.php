@@ -42,10 +42,19 @@ $psPackages = [
 <body class="bg-gray-900 text-white relative">
     <header class="bg-gray-900 sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-            <a class="flex items-center space-x-2" href="index.php">
-                <img alt="Logo PS Rental Indonesia with a PlayStation controller icon and text" class="h-10 w-auto" height="40" src="https://storage.googleapis.com/a1aa/image/346efd31-3ca4-4b96-8bd3-0f0864a4d339.jpg" width="120"/>
-            </a>
+          <a
+          class="flex items-center space-x-2 cursor-pointer"
+          id="adminLogo"
+          title="PS Rental Indonesia"
+        >
+          <img
+            alt="Logo PS Rental Indonesia"
+            class="h-10 w-auto"
+            src="https://storage.googleapis.com/a1aa/image/346efd31-3ca4-4b96-8bd3-0f0864a4d339.jpg"
+          />
+        </a>
             <nav class="hidden md:flex space-x-8 font-semibold text-gray-300">
+                <a class="hover:text-white transition" href="#rental-packages">Paket</a>
                 <a class="hover:text-white transition" href="#how-it-works">Cara Sewa</a>
                 <a class="hover:text-white transition" href="#contact">Kontak</a>
             </nav>
