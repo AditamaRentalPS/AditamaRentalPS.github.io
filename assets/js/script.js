@@ -1,78 +1,76 @@
-function scrollToSection(id) {
-  const section = document.getElementById(id);
-  if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-  }
-}
-
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href.startsWith('http')) {
-          // Biarkan link eksternal bekerja
-          return;
-      }
-      e.preventDefault();
-      const targetId = href.substring(1);
-      scrollToSection(targetId);
-  });
-});
-
-function zoomImage(event) {
-  let zoomModal = document.getElementById("zoomModal");
-  let zoomedImage = document.getElementById("zoomedImage");
-  let zoomCaption = document.getElementById("zoomCaption");
-  
-  zoomModal.style.display = "flex";
-  zoomedImage.src = event.target.src;
-  
-  // Menampilkan penjelasan gambar yang sesuai dengan gambar yang di-zoom
-  let caption = event.target.nextElementSibling.textContent;
-  zoomCaption.textContent = caption;
-}
-
-function closeZoom() {
-  let zoomModal = document.getElementById("zoomModal");
-  zoomModal.style.display = "none";
-}
-
-document.querySelectorAll('.slide-image').forEach(image => {
-  image.addEventListener('click', zoomImage);
-});
-
-document.getElementById("closeZoom").addEventListener("click", closeZoom);
-
-showSlides();
-// Script for Zooming Maps
 document.addEventListener('DOMContentLoaded', () => {
-  const mapsIframe = document.getElementById('mapsIframe');
-  const zoomMapsModal = document.getElementById('zoomMapsModal');
-  const zoomedMapsIframe = document.getElementById('zoomedMapsIframe');
-  const closeMapsZoom = document.getElementById('closeMapsZoom');
 
-  // Open Zoom Modal
-  mapsIframe.addEventListener('click', () => {
-      zoomedMapsIframe.src = mapsIframe.src; // Copy the maps src
-      zoomMapsModal.style.display = 'block';
-  });
+  // =========================
+  // MOBILE MENU
+  // =========================
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-  // Close Zoom Modal
-  closeMapsZoom.addEventListener('click', () => {
-      zoomMapsModal.style.display = 'none';
-      zoomedMapsIframe.src = ''; // Clear the src to stop loading
-  });
-});
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
 
-// ===============================
-// PAGE LOAD ANIMATION (A)
-// ===============================
-document.addEventListener("DOMContentLoaded", () => {
-  const sections = document.querySelectorAll(".page-animate");
+  // =========================
+  // PAGE LOAD ANIMATION (A)
+  // =========================
+  const animatedSections = document.querySelectorAll('.page-animate');
 
-  sections.forEach((section, index) => {
+  animatedSections.forEach((section, index) => {
     setTimeout(() => {
-      section.classList.add("show");
-    }, index * 200); // delay berurutan
+      section.classList.add('show');
+    }, index * 200);
   });
-});
 
+  // =========================
+  // GAME SLIDESHOW
+  // =========================
+  const container = document.getElementById('game-slides-container');
+  if (!container) return;
+
+  const slides = container.children;
+  const totalSlides = slides.length;
+  if (totalSlides === 0) return;
+
+  let currentIndex = 0;
+  let autoSlide = setInterval(nextSlide, 4000);
+
+  function updateSlide() {
+    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+  }
+
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    updateSlide();
+  }
+
+  function prevSlide() {
+    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+    updateSlide();
+  }
+
+  document.getElementById('nextSlide')?.addEventListener('click', () => {
+    nextSlide();
+    resetAutoSlide();
+  });
+
+  document.getElementById('prevSlide')?.addEventListener('click', () => {
+    prevSlide();
+    resetAutoSlide();
+  });
+
+  container.parentElement?.addEventListener('mouseenter', () => {
+    clearInterval(autoSlide);
+  });
+
+  container.parentElement?.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(nextSlide, 4000);
+  });
+
+  function resetAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(nextSlide, 4000);
+  }
+
+});
