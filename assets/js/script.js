@@ -76,4 +76,33 @@ document.addEventListener('DOMContentLoaded', () => {
     autoSlide = setInterval(nextSlide, 4000);
   }
 
+  // =========================
+// SHOW CONTACT FORM ON CLICK
+// =========================
+const rentalButtons = document.querySelectorAll('.open-rental-form');
+const contactSection = document.getElementById('contact');
+
+rentalButtons.forEach(btn => {
+  btn.addEventListener('click', e => {
+    e.preventDefault();
+
+    // tampilkan form jika masih tersembunyi
+    if (contactSection.classList.contains('hidden')) {
+      contactSection.classList.remove('hidden');
+
+      // animasi masuk
+      contactSection.classList.add('page-animate');
+      setTimeout(() => {
+        contactSection.classList.add('show');
+      }, 50);
+    }
+
+    // scroll ke form
+    contactSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  });
+});
+
 });
