@@ -311,7 +311,7 @@ $psPackages = [
     </section>
 
 
-    <section class="bg-gradient-to-r from-blue-800 to-blue-600 py-14 text-center">
+    <section class="bg-gradient-to-r from-black-800 to-blue-600 py-14 text-center">
   <h2 class="text-3xl font-bold mb-4">Siap Main Hari Ini?</h2>
   <p class="mb-6 text-blue-100">
     Sewa PlayStation sekarang tanpa harus membeli konsol.
