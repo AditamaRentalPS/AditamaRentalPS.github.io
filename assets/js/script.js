@@ -109,7 +109,7 @@ let clickCount = 0;
 document.getElementById('logo').addEventListener('click', () => {
   clickCount++;
   if (clickCount === 5) {
-    window.location.href = 'admin.php';
+  window.location.href = 'admin/index.php';
   }
 });
 
