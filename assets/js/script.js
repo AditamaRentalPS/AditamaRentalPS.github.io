@@ -15,13 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================
   // PAGE LOAD ANIMATION (A)
   // =========================
-  const animatedSections = document.querySelectorAll('.page-animate');
+ const animatedSections = document.querySelectorAll('.page-animate');
 
+  setTimeout(() => {
   animatedSections.forEach((section, index) => {
     setTimeout(() => {
       section.classList.add('show');
-    }, index * 200);
+    }, index * 250);
   });
+}, 300);
+
 
   // =========================
   // GAME SLIDESHOW
