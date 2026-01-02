@@ -227,7 +227,7 @@ $psPackages = [
       <div class="min-w-full game-item relative">
         <img src="assets/images/game/call_of_duty_aw.png"
              class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/no-image.png'">
+             onerror="this.src='assets/images/game/call_of_duty_aw.png'">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">Call of Duty</h3>
         </div>
@@ -236,7 +236,7 @@ $psPackages = [
       <div class="min-w-full game-item relative">
         <img src="assets/images/game/elder_ring.png"
              class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/no-image.png'">
+             onerror="this.src='assets/images/game/elder_ring.png'">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">Elden Ring</h3>
         </div>
@@ -245,7 +245,7 @@ $psPackages = [
       <div class="min-w-full game-item relative">
         <img src="assets/images/game/pes.png"
              class="w-full h-72 object-contain bg-black transition-transform duration-500 group-hover:scale-105"
-             onerror="this.src='assets/images/game/no-image.png'">
+             onerror="this.src='assets/images/game/pes.png'">
         <div class="absolute bottom-0 w-full bg-black/70 text-center py-3">
           <h3 class="text-xl font-semibold">PES</h3>
         </div>
