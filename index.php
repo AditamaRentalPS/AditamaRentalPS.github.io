@@ -245,7 +245,7 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 5 unit</span>
                     </div>
-                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Sewa Sekarang</a>
+                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Pesan</a>
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
@@ -258,7 +258,7 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 3 unit</span>
                     </div>
-                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Sewa Sekarang</a>
+                    <a class="mt-auto inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition text-center" href="#contact">Pesan</a>
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
