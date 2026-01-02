@@ -201,7 +201,7 @@ $psPackages = [
 </section>
 
 
-   <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="game-slideshow">
+<section class="max-w-7xl mx-auto px-6 md:px-12 py-12 page-animate" id="game-slideshow">
     <h2 class="text-3xl font-bold mb-4 text-white text-center">
         Game Populer untuk Disewa
     </h2>
@@ -273,7 +273,7 @@ $psPackages = [
 
 </section>
 
-<section class="bg-gray-900 py-14 px-6 md:px-12">
+<section class="bg-gray-900 py-14 px-6 md:px-12 page-animate">
   <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
 
     <div>

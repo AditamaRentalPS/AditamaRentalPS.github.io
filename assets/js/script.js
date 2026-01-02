@@ -62,3 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
       zoomedMapsIframe.src = ''; // Clear the src to stop loading
   });
 });
+
+// ===============================
+// PAGE LOAD ANIMATION (A)
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  const sections = document.querySelectorAll(".page-animate");
+
+  sections.forEach((section, index) => {
+    setTimeout(() => {
+      section.classList.add("show");
+    }, index * 200); // delay berurutan
+  });
+});
+

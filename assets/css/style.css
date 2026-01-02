@@ -220,3 +220,17 @@ footer a:hover {
   margin: 0;
 }
 
+/* ===============================
+   PAGE LOAD ANIMATION (A)
+   =============================== */
+
+.page-animate {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 0.8s ease-out;
+}
+
+.page-animate.show {
+  opacity: 1;
+  transform: translateX(0);
+}
