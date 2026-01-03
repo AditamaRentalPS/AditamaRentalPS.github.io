@@ -44,12 +44,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
  // === CTA "Sewa Sekarang" ===
-document.getElementById('btn-sewa-sekarang')
+ddocument.getElementById('btn-sewa-sekarang')
   ?.addEventListener('click', () => {
-    document.getElementById('choose-package').classList.remove('hidden');
-    document.getElementById('choose-package')
-      .scrollIntoView({ behavior: 'smooth' });
+    const chooseSection = document.getElementById('choose-package');
+
+    chooseSection.classList.remove('hidden');
+    chooseSection.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   });
+
 
 // === Dari Card Paket (Pesan) ===
 document.querySelectorAll('.sewa-btn').forEach(btn => {
@@ -71,12 +76,13 @@ document.querySelectorAll('.choose-ps-btn').forEach(btn => {
 
     document.getElementById('package').value = pkg;
 
-    document.getElementById('choose-package').classList.add('hidden');
     document.getElementById('contact').classList.remove('hidden');
-    document.getElementById('contact')
-      .scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contact').scrollIntoView({
+      behavior: 'smooth'
+    });
   });
 });
+
 
   // ===============================
   // LOGO → ADMIN (EASTER EGG)
