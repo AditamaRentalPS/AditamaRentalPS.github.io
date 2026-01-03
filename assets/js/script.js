@@ -36,24 +36,39 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
   // PESAN DARI CARD → BUKA FORM
   // ===============================
-  document.querySelectorAll('.sewa-btn').forEach(btn => {
+ document.querySelectorAll('.sewa-btn').forEach(btn => {
   btn.addEventListener('click', () => {
+
+    // 🚫 jika stok habis
+    if (btn.dataset.available !== '1') {
+      alert('Maaf, stok sedang habis');
+      return;
+    }
+
     const code = btn.dataset.package;
     const name = btn.dataset.name;
     const daily = parseInt(btn.dataset.daily);
-    const hourly = parseInt(btn.dataset.hourly);
 
+    // isi hidden input
     document.getElementById('package').value = code;
     document.getElementById('price-per-unit').value = daily;
 
+    // tampilkan info paket
     document.getElementById('selected-package-name').textContent = name;
     document.getElementById('selected-package-price').textContent =
-      'Rp' + daily.toLocaleString('id-ID') + ' / hari';
+      'Rp ' + daily.toLocaleString('id-ID') + ' / hari';
 
-    document.getElementById('selected-package-info')
+    document
+      .getElementById('selected-package-info')
       .classList.remove('hidden');
+
+    // scroll ke form
+    document
+      .getElementById('order-form')
+      ?.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
 
 
   // ===============================

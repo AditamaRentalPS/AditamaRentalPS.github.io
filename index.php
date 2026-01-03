@@ -276,20 +276,20 @@ if ($result) {
 
           <!-- BUTTON -->
           <button
-            class="sewa-btn w-full py-3 rounded-lg font-semibold transition
-             data-package="<?= $ps['code'] ?>"
-                data-name="<?= htmlspecialchars($ps['name']) ?>"
-                data-daily="<?= $ps['daily_rate'] ?>"
-                data-hourly="<?= $ps['hourly_rate'] ?>"
-              <?= $isAvailable
-                ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                : 'bg-gray-600 text-gray-300 cursor-not-allowed'
-              ?>"
-            data-package="<?= $ps['code'] ?>"
-            <?= $isAvailable ? '' : 'disabled' ?>
-          >
-            Pesan
-          </button>
+          type="button"
+          class="sewa-btn w-full py-3 rounded-lg font-semibold transition
+            <?= $isAvailable
+              ? 'bg-blue-600 hover:bg-blue-700 text-white'
+              : 'bg-gray-600 text-gray-300 cursor-not-allowed'
+            ?>"
+          data-available="<?= $isAvailable ? '1' : '0' ?>"
+          data-package="<?= $ps['code'] ?>"
+          data-name="<?= htmlspecialchars($ps['name']) ?>"
+          data-daily="<?= $ps['daily_rate'] ?>"
+          data-hourly="<?= $ps['hourly_rate'] ?>"
+        >
+          Pesan
+        </button>
         </div>
       </article>
     <?php endforeach; ?>
