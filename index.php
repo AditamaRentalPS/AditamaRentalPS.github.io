@@ -436,12 +436,13 @@ $psPackages = [
           Tanggal Mulai Sewa
         </label>
         <input
-          id="rental-date"
-          name="rental_date"
-          type="date"
-          required
-          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
-        />
+            type="date"
+            id="rental-date"
+            name="rental_date"
+            min="<?= date('Y-m-d') ?>"
+            required
+            class="w-full rounded-md px-4 py-3 text-gray-900"
+          />
       </div>
 
       <!-- Jenis Durasi -->
