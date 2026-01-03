@@ -48,9 +48,10 @@ $psPackages = [
           title="PS Rental Indonesia"
         >
           <img
+            id="logo"
+            src="assets/images/logo.png"
             alt="Logo PS Rental Indonesia"
-            class="h-10 w-auto"
-            src="https://storage.googleapis.com/a1aa/image/346efd31-3ca4-4b96-8bd3-0f0864a4d339.jpg"
+            class="h-10 w-auto cursor-pointer"
           />
         </a>
             <nav class="hidden md:flex space-x-8 font-semibold text-gray-300">
