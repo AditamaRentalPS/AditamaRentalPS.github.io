@@ -1,20 +1,20 @@
 <?php
-session_start();
-require_once 'includes/db.php';
+session_start(); // Selalu mulai session di awal file PHP yang menggunakan session
 
-/**
- * STATUS LOGIN
- * - User login → $_SESSION['user_id']
- * - Admin login → $_SESSION['admin_logged_in']
- */
-$isLoggedIn = !empty($_SESSION['user_id']) || !empty($_SESSION['admin_logged_in']);
+// Cek apakah user sedang login (untuk tampilan Sign In/Logout di navbar)
+$isLoggedIn = isset($_SESSION['user_id']); // Cek apakah user biasa login
+if (!$isLoggedIn && isset($_SESSION['admin_logged_in'])) {
+    // Jika bukan user biasa tapi admin yang login, anggap juga sebagai 'logged in' untuk tampilan navbar
+    $isLoggedIn = true;
+}
 
-/**
- * AMBIL DATA PRODUK DARI DATABASE
- */
-$query = "SELECT * FROM products";
-$result = mysqli_query($conn, $query);
-$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+// Data paket sewa untuk harga per jam (disimpan tapi tidak lagi ditampilkan di sidebar)
+$psPackages = [
+    'ps5_standard' => ['name' => 'PS5 Standard Edition', 'hourly_rate' => 25000],
+    'ps4_pro' => ['name' => 'PS4 Pro Edition', 'hourly_rate' => 15000],
+    'ps3_classic' => ['name' => 'PS3 Classic Edition', 'hourly_rate' => 10000],
+];
 
 ?>
 
