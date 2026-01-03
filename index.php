@@ -1,20 +1,20 @@
 <?php
-session_start(); // Selalu mulai session di awal file PHP yang menggunakan session
+session_start();
+require_once 'includes/db.php';
 
-// Cek apakah user sedang login (untuk tampilan Sign In/Logout di navbar)
-$isLoggedIn = isset($_SESSION['user_id']); // Cek apakah user biasa login
-if (!$isLoggedIn && isset($_SESSION['admin_logged_in'])) {
-    // Jika bukan user biasa tapi admin yang login, anggap juga sebagai 'logged in' untuk tampilan navbar
-    $isLoggedIn = true;
-}
+/**
+ * STATUS LOGIN
+ * - User login → $_SESSION['user_id']
+ * - Admin login → $_SESSION['admin_logged_in']
+ */
+$isLoggedIn = !empty($_SESSION['user_id']) || !empty($_SESSION['admin_logged_in']);
 
-
-// Data paket sewa untuk harga per jam (disimpan tapi tidak lagi ditampilkan di sidebar)
-$psPackages = [
-    'ps5_standard' => ['name' => 'PS5 Standard Edition', 'hourly_rate' => 25000],
-    'ps4_pro' => ['name' => 'PS4 Pro Edition', 'hourly_rate' => 15000],
-    'ps3_classic' => ['name' => 'PS3 Classic Edition', 'hourly_rate' => 10000],
-];
+/**
+ * AMBIL DATA PRODUK DARI DATABASE
+ */
+$query = "SELECT * FROM products";
+$result = mysqli_query($conn, $query);
+$products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 ?>
 
@@ -232,68 +232,64 @@ $psPackages = [
   </div>
 </section>
 
+  <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="rental-packages">
+    <h2 class="text-3xl font-bold mb-8 text-white text-center">
+        Paket Sewa PlayStations
+    </h2>
 
-    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="rental-packages">
-        <h2 class="text-3xl font-bold mb-8 text-white text-center">Paket Sewa PlayStations</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 5 console with DualSense controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps5.jpg" width="400"/>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">PS5 Standard Edition</h3>
-                    <p class="text-gray-400 text-sm mb-4 flex-grow">Sewa konsol PlayStation 5 dengan performa terbaik dan grafis memukau.</p>
-                    <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="150000">Mulai dari Rp150.000 / hari</p>
-                    <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="25000">Atau Rp25.000 / jam</p>
-                    <div class="text-sm font-semibold mb-3">
-                        <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 5 unit</span>
-                    </div>
-                      <button
-                      class="sewa-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
-                      data-package="ps5_standard"
-                    >
-                      Pesan
-                    </button>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
-              </div>
-            </article>
-            <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-                <img alt="PlayStation 4 Pro console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps4.jpg" width="400"/>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">PS4 Pro Edition</h3>
-                    <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 4 Pro dengan performa tinggi dan banyak game populer.</p>
-                    <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="100000">Mulai dari Rp100.000 / hari</p>
-                    <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="15000">Atau Rp15.000 / jam</p>
-                    <div class="text-sm font-semibold mb-3">
-                        <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 3 unit</span>
-                    </div>
-                    <button
-                      class="sewa-btn bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded"
-                      data-package="ps4_pro"
-                    >
-                      Pesan
-                    </button>
-                </div>
-            </article>
-            <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
-            <img alt="PlayStation 3 console with DualShock controller on white background" class="w-full h-56 object-cover" height="225" src="assets/images/game/ps3.jpg" width="400"/>
+        <?php foreach ($products as $product): ?>
+        <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col">
+
+            <img
+                src="assets/images/game/<?= strtolower(str_replace(' ', '', $product['name'])) ?>.jpg"
+                class="w-full h-56 object-cover"
+                alt="<?= $product['name'] ?>"
+            />
+
             <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-xl font-semibold mb-2">PS3 Classic Edition</h3>
-                <p class="text-gray-400 text-sm mb-4 flex-grow">Konsol PlayStation 3 dengan koleksi game klasik dan nostalgia.</p>
-                <p class="text-blue-400 font-bold text-lg mb-2" data-daily-rate="80000">Mulai dari Rp80.000 / hari</p>
-                <p class="text-blue-400 font-bold text-md mb-4" data-hourly-rate="10000">Atau Rp10.000 / jam</p>
-                
-                <div class="text-sm font-semibold mb-3">
-                    <span class="text-red-400"><i class="fas fa-times-circle"></i> Stok Habis</span>
-                </div>
+                <h3 class="text-xl font-semibold mb-2">
+                    <?= $product['name'] ?>
+                </h3>
+
+                <p class="text-blue-400 font-bold mb-2">
+                    Mulai dari Rp<?= number_format($product['daily_rate']) ?> / hari
+                </p>
+
+                <p class="text-blue-300 mb-4">
+                    Atau Rp<?= number_format($product['hourly_rate']) ?> / jam
+                </p>
+
+                <!-- STOK -->
+                <?php if ($product['stock'] > 0): ?>
+                    <p class="text-green-400 font-semibold mb-3">
+                        ✔ Tersedia: <?= $product['stock'] ?> unit
+                    </p>
+                <?php else: ?>
+                    <p class="text-red-400 font-semibold mb-3">
+                        ✖ Stok Habis
+                    </p>
+                <?php endif; ?>
+
+                <!-- BUTTON -->
                 <button
-                  class="sewa-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
-                  data-package="ps3_classic"
+                    class="sewa-btn w-full py-3 rounded-lg font-semibold
+                    <?= $product['stock'] > 0
+                        ? 'bg-blue-600 hover:bg-blue-700'
+                        : 'bg-gray-500 cursor-not-allowed'; ?>"
+                    data-package="<?= $product['id'] ?>"
+                    <?= $product['stock'] > 0 ? '' : 'disabled'; ?>
                 >
-                  Pesan
+                    Pesan
                 </button>
+
             </div>
         </article>
-        </div>
-    </section>
+        <?php endforeach; ?>
+
+    </div>
+</section>
 
     </section>
     <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="testimonials">
