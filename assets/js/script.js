@@ -132,7 +132,7 @@ if (btnSewaSekarang && rentalPackages) {
         contactForm.classList.add('hidden');
       }
 
-      choosePackage.scrollIntoView({
+      rentalPackages.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
