@@ -18,9 +18,92 @@ $result = $conn->query("SELECT * FROM products");
     <title>Admin - Kelola Stok</title>
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+  padding: 40px;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-header h1 {
+  font-size: 28px;
+}
+
+.logout-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: #dc2626;
+}
+
+table {
+  width: 100%;
+  max-width: 700px;
+  background: #1f2933;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 14px;
+  text-align: left;
+}
+
+th {
+  background: #111827;
+}
+
+tr:not(:last-child) {
+  border-bottom: 1px solid #374151;
+}
+
+input[type="number"] {
+  width: 80px;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+}
+
+.save-btn {
+  background: #2563eb;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+}
+</style>
+
 <body class="bg-gray-900 text-white p-8">
 
 <h1 class="text-2xl font-bold mb-6">Kelola Stok PlayStation</h1>
+
+<div class="admin-header">
+  <h1>Kelola Stok PlayStation</h1>
+
+  <form action="../auth/logout.php" method="POST">
+    <button type="submit" class="logout-btn">Logout</button>
+  </form>
+</div>
+
 
 <table class="w-full border-collapse bg-gray-800">
     <thead>
