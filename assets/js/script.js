@@ -83,4 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+  const dateInput = document.getElementById('rental-date');
+  if (!dateInput) return;
+
+  const today = new Date().toISOString().split('T')[0];
+  dateInput.min = today;
+});
+
 });

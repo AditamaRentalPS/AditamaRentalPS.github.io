@@ -439,7 +439,7 @@ $psPackages = [
             type="date"
             id="rental-date"
             name="rental_date"
-            min="<?= date('Y-m-d') ?>"
+            min="<?php echo date('Y-m-d'); ?>"
             required
             class="w-full rounded-md px-4 py-3 text-gray-900"
           />
