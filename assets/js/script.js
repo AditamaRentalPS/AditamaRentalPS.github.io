@@ -39,21 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
  document.querySelectorAll('.sewa-btn').forEach(btn => {
   btn.addEventListener('click', () => {
 
-    // 🚫 jika stok habis
-    if (btn.dataset.available !== '1') {
-      alert('Maaf, stok sedang habis');
-      return;
-    }
-
     const code = btn.dataset.package;
     const name = btn.dataset.name;
     const daily = parseInt(btn.dataset.daily);
 
-    // isi hidden input
     document.getElementById('package').value = code;
     document.getElementById('price-per-unit').value = daily;
 
-    // tampilkan info paket
     document.getElementById('selected-package-name').textContent = name;
     document.getElementById('selected-package-price').textContent =
       'Rp ' + daily.toLocaleString('id-ID') + ' / hari';
@@ -62,12 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
       .getElementById('selected-package-info')
       .classList.remove('hidden');
 
-    // scroll ke form
-    document
-      .getElementById('rental-form')
-      ?.scrollIntoView({ behavior: 'smooth' });
+    // 🔥 FORM YANG BENAR
+    const formSection = document.getElementById('rental-form');
+    formSection.classList.remove('hidden');
+    formSection.scrollIntoView({ behavior: 'smooth' });
   });
 });
+
 
 
 
