@@ -37,21 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // PESAN DARI CARD → BUKA FORM
   // ===============================
   document.querySelectorAll('.sewa-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const pkg = btn.dataset.package;
-      if (!pkg) return;
+  btn.addEventListener('click', () => {
+    const code = btn.dataset.package;
+    const name = btn.dataset.name;
+    const daily = parseInt(btn.dataset.daily);
+    const hourly = parseInt(btn.dataset.hourly);
 
-      const packageInput = document.getElementById('package');
-      if (packageInput) {
-        packageInput.value = pkg;
-      }
+    document.getElementById('package').value = code;
+    document.getElementById('price-per-unit').value = daily;
 
-      if (contactForm) {
-        contactForm.classList.remove('hidden');
-        contactForm.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
+    document.getElementById('selected-package-name').textContent = name;
+    document.getElementById('selected-package-price').textContent =
+      'Rp' + daily.toLocaleString('id-ID') + ' / hari';
+
+    document.getElementById('selected-package-info')
+      .classList.remove('hidden');
   });
+});
+
 
   // ===============================
   // DATE MIN TODAY

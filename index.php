@@ -277,6 +277,10 @@ if ($result) {
           <!-- BUTTON -->
           <button
             class="sewa-btn w-full py-3 rounded-lg font-semibold transition
+             data-package="<?= $ps['code'] ?>"
+                data-name="<?= htmlspecialchars($ps['name']) ?>"
+                data-daily="<?= $ps['daily_rate'] ?>"
+                data-hourly="<?= $ps['hourly_rate'] ?>"
               <?= $isAvailable
                 ? 'bg-blue-600 hover:bg-blue-700 text-white'
                 : 'bg-gray-600 text-gray-300 cursor-not-allowed'
@@ -373,6 +377,24 @@ if ($result) {
           class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
         />
       </div>
+
+      <!-- INFO PAKET DIPILIH -->
+      <div id="selected-package-info"
+          class="mb-6 p-4 rounded-lg bg-gray-900 text-white hidden">
+        <p class="font-semibold text-lg">
+          Paket Dipilih:
+          <span id="selected-package-name" class="text-blue-400"></span>
+        </p>
+        <p class="mt-1">
+          Harga:
+          <span id="selected-package-price" class="text-green-400 font-bold"></span>
+        </p>
+      </div>
+
+      <!-- HIDDEN INPUT -->
+      <input type="hidden" name="package" id="package">
+      <input type="hidden" name="price_per_unit" id="price-per-unit">
+
 
       <!-- Telepon -->
       <div>
