@@ -123,10 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnSewaSekarang && choosePackage) {
     btnSewaSekarang.addEventListener('click', () => {
-      // Tampilkan pilih PS
-      choosePackage.classList.remove('hidden');
+      const paketSection = document.getElementById('paket');
 
-      // Pastikan form masih disembunyikan
+      paketSection.scrollIntoView({
+        behavior: 'smooth'
+      });
+
       if (contactForm) {
         contactForm.classList.add('hidden');
       }
