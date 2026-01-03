@@ -343,7 +343,7 @@ if ($result) {
 
     <form
       id="rental-form"
-      class="space-y-6"
+      class="hidden"
       method="POST"
       action="process_order.php"
       novalidate
