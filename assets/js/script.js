@@ -91,4 +91,14 @@ document.addEventListener('DOMContentLoaded', () => {
   dateInput.min = today;
 });
 
+document.querySelectorAll('.sewa-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pkg = btn.dataset.package;
+    document.getElementById('package').value = pkg;
+
+    document.getElementById('contact').classList.remove('hidden');
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
 });

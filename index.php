@@ -394,39 +394,17 @@ if ($result) {
         <label class="block mb-2 font-semibold" for="package">
           Pilih Paket Sewa
         </label>
-        <select
+       <select
           id="package"
           name="package"
-          required
-          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
+          class="hidden"
         >
-          <option value="" disabled selected>
-            -- Pilih Paket --
-          </option>
-          <option
-            value="ps5_standard"
-            data-daily-rate="150000"
-            data-hourly-rate="25000"
-          >
-            PS5 Standard Edition
-          </option>
-          <option
-            value="ps4_pro"
-            data-daily-rate="100000"
-            data-hourly-rate="15000"
-          >
-            PS4 Pro Edition
-          </option>
-          <option
-            value="ps3_classic"
-            data-daily-rate="80000"
-            data-hourly-rate="10000"
-          >
-            PS3 Classic Edition
-          </option>
+          <option value="">-- Pilih Paket --</option>
+          <option value="ps5_standard">PS5 Standard</option>
+          <option value="ps4_pro">PS4 Pro</option>
+          <option value="ps3_classic">PS3 Classic</option>
         </select>
       </div>
-
       <!-- Tanggal -->
       <div>
         <label class="block mb-2 font-semibold" for="rental-date">
