@@ -4,7 +4,7 @@
 $host = 'localhost'; // Host database Anda, biasanya 'localhost'
 $user = 'root';      // Username database Anda (contoh: 'root' untuk XAMPP/WAMP/Laragon)
 $pass = '';          // Password database Anda (contoh: kosong '' untuk XAMPP/WAMP/Laragon)
-$dbname = 'rental';  // Nama database Anda, harus 'rental' seperti yang ada di phpMyAdmin
+$dbname = 'dc_rental';  // Nama database Anda, harus 'rental' seperti yang ada di phpMyAdmin
 
 // Buat koneksi MySQLi
 $conn = new mysqli($host, $user, $pass, $dbname);
