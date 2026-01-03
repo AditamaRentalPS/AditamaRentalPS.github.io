@@ -50,12 +50,20 @@ document.querySelectorAll('.sewa-btn').forEach(btn => {
       .getElementById('selected-package-info')
       .classList.remove('hidden');
 
-    // tampilkan form
+    // 🔥 TAMPILKAN SECTION CONTACT + FORM
+    const contactSection = document.getElementById('contact');
     const formSection = document.getElementById('rental-form');
-    if (formSection) {
+
+    if (contactSection && formSection) {
+      contactSection.classList.remove('hidden'); // ⬅️ INI YANG KURANG
       formSection.classList.remove('hidden');
-      formSection.scrollIntoView({ behavior: 'smooth' });
+
+      contactSection.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
     }
+
   });
 });
 
