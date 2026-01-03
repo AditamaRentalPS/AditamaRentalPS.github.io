@@ -7,7 +7,7 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require 'db.php'; // Pastikan file db.php ada dan berisi koneksi database ($conn)
+require_once __DIR__ . '/../includes/db.php';
 
 // Pastikan request adalah POST. Jika bukan, arahkan kembali.
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
