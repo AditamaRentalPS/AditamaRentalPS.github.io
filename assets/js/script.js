@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
  // === CTA "Sewa Sekarang" ===
-ddocument.getElementById('btn-sewa-sekarang')
+document.getElementById('btn-sewa-sekarang')
   ?.addEventListener('click', () => {
     const chooseSection = document.getElementById('choose-package');
 
