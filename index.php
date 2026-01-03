@@ -1,19 +1,42 @@
 <?php
-session_start(); // Selalu mulai session di awal file PHP yang menggunakan session
+session_start();
 
-// Cek apakah user sedang login (untuk tampilan Sign In/Logout di navbar)
-$isLoggedIn = isset($_SESSION['user_id']); // Cek apakah user biasa login
-if (!$isLoggedIn && isset($_SESSION['admin_logged_in'])) {
-    // Jika bukan user biasa tapi admin yang login, anggap juga sebagai 'logged in' untuk tampilan navbar
+/*
+|--------------------------------------------------------------------------
+| LOGIN STATE
+|--------------------------------------------------------------------------
+| Digunakan hanya untuk kebutuhan UI (navbar, admin akses, dll)
+*/
+$isLoggedIn = false;
+
+if (isset($_SESSION['user_id']) || isset($_SESSION['admin_logged_in'])) {
     $isLoggedIn = true;
 }
 
-
-// Data paket sewa untuk harga per jam (disimpan tapi tidak lagi ditampilkan di sidebar)
+/*
+|--------------------------------------------------------------------------
+| DATA PAKET SEWA (sementara, nanti bisa dari database)
+|--------------------------------------------------------------------------
+*/
 $psPackages = [
-    'ps5_standard' => ['name' => 'PS5 Standard Edition', 'hourly_rate' => 25000],
-    'ps4_pro' => ['name' => 'PS4 Pro Edition', 'hourly_rate' => 15000],
-    'ps3_classic' => ['name' => 'PS3 Classic Edition', 'hourly_rate' => 10000],
+    'ps5_standard' => [
+        'name'        => 'PS5 Standard Edition',
+        'daily_rate'  => 150000,
+        'hourly_rate' => 25000,
+        'stock'       => 5
+    ],
+    'ps4_pro' => [
+        'name'        => 'PS4 Pro Edition',
+        'daily_rate'  => 100000,
+        'hourly_rate' => 15000,
+        'stock'       => 3
+    ],
+    'ps3_classic' => [
+        'name'        => 'PS3 Classic Edition',
+        'daily_rate'  => 80000,
+        'hourly_rate' => 10000,
+        'stock'       => 0
+    ],
 ];
 
 ?>
@@ -232,62 +255,65 @@ $psPackages = [
   </div>
 </section>
 
-  <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="rental-packages">
+    <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="rental-packages">
     <h2 class="text-3xl font-bold mb-8 text-white text-center">
         Paket Sewa PlayStations
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <?php foreach ($psPackages as $key => $ps): ?>
+            <?php $isAvailable = $ps['stock'] > 0; ?>
 
-        <?php foreach ($products as $product): ?>
-        <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col">
+            <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition flex flex-col
+                <?= $isAvailable ? 'hover:shadow-2xl' : 'opacity-60' ?>">
 
-            <img
-                src="assets/images/game/<?= strtolower(str_replace(' ', '', $product['name'])) ?>.jpg"
-                class="w-full h-56 object-cover"
-                alt="<?= $product['name'] ?>"
-            />
+                <img
+                    src="assets/images/game/<?= explode('_', $key)[0] ?>.jpg"
+                    alt="<?= htmlspecialchars($ps['name']) ?>"
+                    class="w-full h-56 object-cover"
+                />
 
-            <div class="p-6 flex flex-col flex-grow">
-                <h3 class="text-xl font-semibold mb-2">
-                    <?= $product['name'] ?>
-                </h3>
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-semibold mb-2">
+                        <?= htmlspecialchars($ps['name']) ?>
+                    </h3>
 
-                <p class="text-blue-400 font-bold mb-2">
-                    Mulai dari Rp<?= number_format($product['daily_rate']) ?> / hari
-                </p>
-
-                <p class="text-blue-300 mb-4">
-                    Atau Rp<?= number_format($product['hourly_rate']) ?> / jam
-                </p>
-
-                <!-- STOK -->
-                <?php if ($product['stock'] > 0): ?>
-                    <p class="text-green-400 font-semibold mb-3">
-                        ✔ Tersedia: <?= $product['stock'] ?> unit
+                    <p class="text-blue-400 font-bold text-lg mb-2">
+                        Mulai dari Rp<?= number_format($ps['daily_rate'], 0, ',', '.') ?> / hari
                     </p>
-                <?php else: ?>
-                    <p class="text-red-400 font-semibold mb-3">
-                        ✖ Stok Habis
+
+                    <p class="text-blue-400 font-bold text-md mb-4">
+                        Atau Rp<?= number_format($ps['hourly_rate'], 0, ',', '.') ?> / jam
                     </p>
-                <?php endif; ?>
 
-                <!-- BUTTON -->
-                <button
-                    class="sewa-btn w-full py-3 rounded-lg font-semibold
-                    <?= $product['stock'] > 0
-                        ? 'bg-blue-600 hover:bg-blue-700'
-                        : 'bg-gray-500 cursor-not-allowed'; ?>"
-                    data-package="<?= $product['id'] ?>"
-                    <?= $product['stock'] > 0 ? '' : 'disabled'; ?>
-                >
-                    Pesan
-                </button>
+                    <!-- STATUS STOK -->
+                    <div class="text-sm font-semibold mb-4">
+                        <?php if ($isAvailable): ?>
+                            <span class="text-green-400">
+                                ✔ Tersedia: <?= $ps['stock'] ?> unit
+                            </span>
+                        <?php else: ?>
+                            <span class="text-red-400">
+                                ✖ Stok Habis
+                            </span>
+                        <?php endif; ?>
+                    </div>
 
-            </div>
-        </article>
+                    <!-- BUTTON -->
+                    <button
+                        class="sewa-btn w-full py-3 rounded-lg font-semibold transition
+                            <?= $isAvailable
+                                ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                                : 'bg-gray-600 text-gray-300 cursor-not-allowed'
+                            ?>"
+                        data-package="<?= $key ?>"
+                        <?= $isAvailable ? '' : 'disabled' ?>
+                    >
+                        Pesan
+                    </button>
+                </div>
+            </article>
         <?php endforeach; ?>
-
     </div>
 </section>
 
