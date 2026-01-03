@@ -113,55 +113,47 @@ document.getElementById('logo').addEventListener('click', () => {
   }
 });
 
-// ===============================
-// PILIH PAKET → AUTO ISI FORM
-// ===============================
-document.querySelectorAll('.sewa-btn').forEach(button => {
-  button.addEventListener('click', function () {
-    const psType = this.dataset.ps;
-
-    // scroll ke section form
-    const contactSection = document.getElementById('contact');
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // tunggu animasi / form muncul
-    setTimeout(() => {
-      const psInput = document.getElementById('jenis_ps');
-      if (psInput) {
-        psInput.value = psType;
-      }
-    }, 300);
-  });
-});
-
-
 document.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.sewa-btn');
+  const pesanButtons = document.querySelectorAll('.sewa-btn');
+  const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
   const contactSection = document.getElementById('contact');
   const packageSelect = document.getElementById('package');
 
-  buttons.forEach(btn => {
+  // ===============================
+  // 1. KLIK "PESAN" → SIMPAN PAKET
+  // ===============================
+  pesanButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       const selectedPackage = btn.dataset.package;
       if (!selectedPackage) return;
 
-      // 1. tampilkan form
-      contactSection.classList.remove('hidden');
+      // simpan paket yang dipilih
+      localStorage.setItem('selected_package', selectedPackage);
 
-      // 2. scroll ke form
-      contactSection.scrollIntoView({ behavior: 'smooth' });
-
-      // 3. isi paket otomatis
-      setTimeout(() => {
-        packageSelect.value = selectedPackage;
-
-        // trigger supaya harga terhitung
-        packageSelect.dispatchEvent(new Event('change'));
-      }, 300);
+      // scroll ke tombol "Sewa Sekarang"
+      btnSewaSekarang.scrollIntoView({ behavior: 'smooth' });
     });
   });
-});
 
+  // ===============================
+  // 2. KLIK "SEWA SEKARANG" → BUKA FORM
+  // ===============================
+  btnSewaSekarang.addEventListener('click', () => {
+    const selectedPackage = localStorage.getItem('selected_package');
+
+    // tampilkan form
+    contactSection.classList.remove('hidden');
+
+    // scroll ke form
+    contactSection.scrollIntoView({ behavior: 'smooth' });
+
+    // isi paket otomatis
+    if (selectedPackage) {
+      setTimeout(() => {
+        packageSelect.value = selectedPackage;
+        packageSelect.dispatchEvent(new Event('change'));
+      }, 300);
+    }
+  });
+});
 });

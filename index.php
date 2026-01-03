@@ -319,12 +319,12 @@ $psPackages = [
   <p class="mb-6 text-blue-100">
     Sewa PlayStation sekarang tanpa harus membeli konsol.
   </p>
-  <a
-  href="#contact"
-  class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition open-rental-form">
-  Sewa Sekarang
-</a>
-
+        <button
+        id="btn-sewa-sekarang"
+        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-md transition"
+      >
+        Sewa Sekarang
+      </button>
 </section>
 
     <section
