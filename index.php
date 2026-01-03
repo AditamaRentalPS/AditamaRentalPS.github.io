@@ -390,21 +390,13 @@ if ($result) {
       </div>
 
       <!-- Paket -->
-      <div>
-        <label class="block mb-2 font-semibold" for="package">
-          Pilih Paket Sewa
-        </label>
-       <select
-          id="package"
-          name="package"
-          class="hidden"
-        >
-          <option value="">-- Pilih Paket --</option>
-          <option value="ps5_standard">PS5 Standard</option>
-          <option value="ps4_pro">PS4 Pro</option>
-          <option value="ps3_classic">PS3 Classic</option>
-        </select>
-      </div>
+      <select id="package" name="package" class="hidden">
+        <option value="">-- Paket --</option>
+        <option value="ps5_standard">PS5 Standard</option>
+        <option value="ps4_pro">PS4 Pro</option>
+        <option value="ps3_classic">PS3 Classic</option>
+      </select>
+
       <!-- Tanggal -->
       <div>
         <label class="block mb-2 font-semibold" for="rental-date">
