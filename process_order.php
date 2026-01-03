@@ -13,7 +13,7 @@ if (
   empty($_POST['total_price'])
 ) {
   die('Data tidak lengkap.');
-}
+}                           
 
 // Ambil data POST
 $package  = $_POST['package'] ?? '';
