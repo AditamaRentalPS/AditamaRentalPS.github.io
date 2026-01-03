@@ -15,37 +15,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
   // CTA: SEWA SEKARANG → SCROLL KE PAKET
   // ===============================
-  const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
-  const rentalPackages = document.getElementById('rental-packages');
-  const contactForm = document.getElementById('contact');
+ const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
+const rentalPackages = document.getElementById('rental-packages');
 
-  if (btnSewaSekarang && rentalPackages) {
-    btnSewaSekarang.addEventListener('click', () => {
-      // pastikan form disembunyikan
-      if (contactForm) {
-        contactForm.classList.add('hidden');
-      }
-
-      rentalPackages.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+if (btnSewaSekarang && rentalPackages) {
+  btnSewaSekarang.addEventListener('click', () => {
+    rentalPackages.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
     });
-  }
+  });
+}
 
   // ===============================
   // PESAN DARI CARD → BUKA FORM
   // ===============================
- document.querySelectorAll('.sewa-btn').forEach(btn => {
+document.querySelectorAll('.sewa-btn').forEach(btn => {
   btn.addEventListener('click', () => {
 
     const code = btn.dataset.package;
     const name = btn.dataset.name;
     const daily = parseInt(btn.dataset.daily);
 
+    // isi hidden input
     document.getElementById('package').value = code;
     document.getElementById('price-per-unit').value = daily;
 
+    // tampilkan info paket
     document.getElementById('selected-package-name').textContent = name;
     document.getElementById('selected-package-price').textContent =
       'Rp ' + daily.toLocaleString('id-ID') + ' / hari';
@@ -54,13 +50,14 @@ document.addEventListener('DOMContentLoaded', () => {
       .getElementById('selected-package-info')
       .classList.remove('hidden');
 
-    // 🔥 FORM YANG BENAR
+    // tampilkan form
     const formSection = document.getElementById('rental-form');
-    formSection.classList.remove('hidden');
-    formSection.scrollIntoView({ behavior: 'smooth' });
+    if (formSection) {
+      formSection.classList.remove('hidden');
+      formSection.scrollIntoView({ behavior: 'smooth' });
+    }
   });
 });
-
 
 
 
