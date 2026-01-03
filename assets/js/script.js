@@ -116,4 +116,29 @@ document.querySelectorAll('.sewa-btn').forEach(btn => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
+  const choosePackage = document.getElementById('choose-package');
+  const contactForm = document.getElementById('contact');
+
+  if (btnSewaSekarang && choosePackage) {
+    btnSewaSekarang.addEventListener('click', () => {
+      // Tampilkan pilih PS
+      choosePackage.classList.remove('hidden');
+
+      // Pastikan form masih disembunyikan
+      if (contactForm) {
+        contactForm.classList.add('hidden');
+      }
+
+      choosePackage.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    });
+  }
+});
+
+
+
 });
