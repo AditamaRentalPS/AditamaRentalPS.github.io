@@ -95,7 +95,7 @@ input[type="number"] {
 <body class="bg-gray-900 text-white p-8">
 
 <h1 class="text-2xl font-bold mb-6">Kelola Stok PlayStation</h1>
-
+<a href="orders.php" style="color:#60a5fa;">📦 Lihat Order Masuk</a>
 <div class="admin-header">
   <h1>Kelola Stok PlayStation</h1>
 
@@ -141,6 +141,5 @@ input[type="number"] {
         <?php endwhile; ?>
     </tbody>
 </table>
-
 </body>
 </html>
