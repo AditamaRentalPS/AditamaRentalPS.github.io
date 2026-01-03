@@ -157,11 +157,14 @@ function hitungTotal() {
     });
 
     // klik SAYA SUDAH BAYAR → submit form
-    btnKonfirmasi.addEventListener('click', () => {
-      qrisModal.classList.add('hidden');
-      console.log('TOTAL PRICE:', document.getElementById('total_price').value);  
-      rentalForm.submit(); // 🔥 BARU SUBMIT KE PHP
-    });
+   btnKonfirmasi.addEventListener('click', () => {
+  hitungTotal(); // 🔥 PASTIKAN total_price TERISI
+
+  console.log('TOTAL PRICE DIKIRIM:', document.getElementById('total_price').value);
+
+  qrisModal.classList.add('hidden');
+  rentalForm.submit();
+   });
 
   }
 });
