@@ -325,6 +325,43 @@ if ($result) {
       </button>
 </section>
 
+<!-- ================= PILIH JENIS PLAYSTATION ================= -->
+<section
+  id="choose-package"
+  class="bg-gray-900 py-16 px-6 md:px-12 hidden"
+>
+  <div class="max-w-4xl mx-auto text-white text-center">
+    <h2 class="text-3xl font-bold mb-8">
+      Pilih Jenis PlayStation
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <button
+        class="choose-ps-btn bg-gray-800 p-6 rounded-xl hover:bg-blue-700 transition"
+        data-package="ps5_standard"
+      >
+        PS5 Standard
+      </button>
+
+      <button
+        class="choose-ps-btn bg-gray-800 p-6 rounded-xl hover:bg-blue-700 transition"
+        data-package="ps4_pro"
+      >
+        PS4 Pro
+      </button>
+
+      <button
+        class="choose-ps-btn bg-gray-800 p-6 rounded-xl hover:bg-blue-700 transition"
+        data-package="ps3_classic"
+      >
+        PS3 Classic
+      </button>
+    </div>
+  </div>
+</section>
+<!-- =========================================================== -->
+
+
     <section
   id="contact"
   class="bg-gradient-to-r from-blue-900 to-blue-700 py-16 px-6 md:px-12 hidden"

@@ -43,31 +43,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // ===============================
-  // SEWA SEKARANG → BUKA FORM
-  // ===============================
-  const contactSection = document.getElementById('contact');
-  const packageSelect = document.getElementById('package');
+ // === CTA "Sewa Sekarang" ===
+document.getElementById('btn-sewa-sekarang')
+  ?.addEventListener('click', () => {
+    document.getElementById('choose-package').classList.remove('hidden');
+    document.getElementById('choose-package')
+      .scrollIntoView({ behavior: 'smooth' });
+  });
 
-  if (btnSewaSekarang && contactSection && packageSelect) {
-    btnSewaSekarang.addEventListener('click', () => {
-      const paket = localStorage.getItem('selected_package');
+// === Dari Card Paket (Pesan) ===
+document.querySelectorAll('.sewa-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pkg = btn.dataset.package;
 
-      // tampilkan form
-      contactSection.classList.remove('hidden');
+    document.getElementById('package').value = pkg;
 
-      // scroll ke form
-      contactSection.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('contact').classList.remove('hidden');
+    document.getElementById('contact')
+      .scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
-      // isi paket otomatis
-      if (paket) {
-        setTimeout(() => {
-          packageSelect.value = paket;
-          packageSelect.dispatchEvent(new Event('change'));
-        }, 300);
-      }
-    });
-  }
+// === Pilih PS Manual ===
+document.querySelectorAll('.choose-ps-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const pkg = btn.dataset.package;
+
+    document.getElementById('package').value = pkg;
+
+    document.getElementById('choose-package').classList.add('hidden');
+    document.getElementById('contact').classList.remove('hidden');
+    document.getElementById('contact')
+      .scrollIntoView({ behavior: 'smooth' });
+  });
+});
 
   // ===============================
   // LOGO → ADMIN (EASTER EGG)
