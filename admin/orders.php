@@ -10,27 +10,23 @@ if (!isset($_SESSION['admin_logged_in'])) {
 $sql = "
 SELECT 
   o.id,
+  p.name AS product_name,
   o.email,
   o.phone,
   o.rental_date,
   o.duration,
   o.duration_type,
   o.total_price,
-  o.created_at,
-  p.name AS product_name
+  o.created_at
 FROM orders o
-JOIN products p ON o.package = p.code
+JOIN products p ON o.product_slug = p.slug
 ORDER BY o.created_at DESC
 ";
 
 $result = $conn->query($sql);
-
 if (!$result) {
-    die("Query error: " . $conn->error);
+    die('Query error: ' . $conn->error);
 }
-
-
-$result = $conn->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="id">
