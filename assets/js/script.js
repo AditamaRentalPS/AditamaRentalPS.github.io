@@ -37,16 +37,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // HITUNG TOTAL
   // ===============================
   function hitungTotal() {
-    if (!durationInput || !pricePerUnitInput || !totalText) return;
+  const durasiInput = document.getElementById('duration');
+  const priceInput = document.getElementById('price-per-unit');
+  const totalText = document.getElementById('total-price');
+  const totalHidden = document.getElementById('total_price');
 
-    const durasi = parseInt(durationInput.value) || 0;
-    const harga  = parseInt(pricePerUnitInput.value) || 0;
+  if (!durasiInput || !priceInput || !totalText || !totalHidden) return;
 
-    const total = durasi * harga;
+  const durasi = parseInt(durasiInput.value) || 0;
+  const harga = parseInt(priceInput.value) || 0;
 
-    totalText.textContent =
-      'Rp ' + total.toLocaleString('id-ID');
-  }
+  const total = durasi * harga;
+
+  totalText.textContent =
+    'Rp ' + total.toLocaleString('id-ID');
+
+  // 🔥 INI YANG PALING PENTING
+  totalHidden.value = total;
+}
 
   // ===============================
   // PESAN DARI CARD → BUKA FORM
@@ -134,4 +142,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const btnBayar = document.getElementById('btn-bayar');
+  const qrisModal = document.getElementById('qris-modal');
+  const btnKonfirmasi = document.getElementById('btn-konfirmasi-bayar');
+  const rentalForm = document.getElementById('rental-form');
+
+  if (btnBayar && qrisModal && btnKonfirmasi && rentalForm) {
+
+    // klik SEWA SEKARANG → tampilkan QRIS
+    btnBayar.addEventListener('click', () => {
+      qrisModal.classList.remove('hidden');
+      qrisModal.classList.add('flex');
+    });
+
+    // klik SAYA SUDAH BAYAR → submit form
+    btnKonfirmasi.addEventListener('click', () => {
+      qrisModal.classList.add('hidden');
+      rentalForm.submit(); // 🔥 BARU SUBMIT KE PHP
+    });
+
+  }
 });

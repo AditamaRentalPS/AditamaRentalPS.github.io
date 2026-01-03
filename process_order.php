@@ -7,6 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+if (
+  empty($_POST['package']) ||
+  empty($_POST['phone']) ||
+  empty($_POST['total_price'])
+) {
+  die('Data tidak lengkap.');
+}
+
 // Ambil data POST
 $package  = $_POST['package'] ?? '';
 $email    = trim($_POST['email'] ?? '');

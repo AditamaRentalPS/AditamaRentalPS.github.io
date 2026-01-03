@@ -447,20 +447,48 @@ if ($result) {
         <span id="total-price">Rp0</span>
         <input
           type="hidden"
-          id="hidden-total-price"
-          name="total_price_hidden"
+          id="total-price"
+          name="total_price"
           value="0"
         />
       </div>
 
       <!-- Submit -->
       <button
-        type="submit"
-        class="w-full bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 rounded-md transition"
-      >
+      type="button"
+      id="btn-bayar"
+      class="w-full bg-blue-600 py-3 rounded-lg font-semibold text-white"
+    >
         Sewa Sekarang
       </button>
     </form>
+
+    <!-- MODAL QRIS -->
+<div id="qris-modal" class="fixed inset-0 bg-black bg-opacity-60 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-80 text-center">
+
+    <h2 class="text-xl font-bold mb-4">Pembayaran QRIS</h2>
+
+    <img
+      src="assets/images/qris_dummy.png"
+      alt="QRIS"
+      class="mx-auto mb-4 w-48"
+    />
+
+    <p class="text-gray-700 mb-4">
+      Scan QRIS ini untuk pembayaran (simulasi).
+    </p>
+
+    <button
+      id="btn-konfirmasi-bayar"
+      class="w-full bg-green-600 text-white py-2 rounded-lg font-semibold"
+    >
+      Saya Sudah Bayar
+    </button>
+
+  </div>
+</div>
+
   </div>
 </section>
 
