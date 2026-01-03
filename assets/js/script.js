@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // scroll ke form
     document
-      .getElementById('order-form')
+      .getElementById('rental-form')
       ?.scrollIntoView({ behavior: 'smooth' });
   });
 });
