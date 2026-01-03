@@ -36,11 +36,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
   // HITUNG TOTAL
   // ===============================
-  function hitungTotal() {
+function hitungTotal() {
   const durasiInput = document.getElementById('duration');
   const priceInput = document.getElementById('price-per-unit');
   const totalText = document.getElementById('total-price');
-  const totalHidden = document.getElementById('total_price');
+  const totalHidden = document.getElementById('total_price'); // 🔥 PENTING
 
   if (!durasiInput || !priceInput || !totalText || !totalHidden) return;
 
@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const total = durasi * harga;
 
-  totalText.textContent =
-    'Rp ' + total.toLocaleString('id-ID');
+  // tampil di UI
+  totalText.textContent = 'Rp ' + total.toLocaleString('id-ID');
 
-  // 🔥 INI YANG PALING PENTING
+  // 🔥 KIRIM KE PHP
   totalHidden.value = total;
 }
 

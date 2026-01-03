@@ -442,17 +442,19 @@ if ($result) {
       </div>
 
       <!-- Total Harga -->
+      <!-- Total Harga -->
       <div class="text-xl font-bold text-center">
         Total Harga:
         <span id="total-price">Rp0</span>
+
+        <!-- INI YANG DIKIRIM KE PHP -->
         <input
           type="hidden"
-          id="total-price"
+          id="total_price"
           name="total_price"
           value="0"
-        />
+        >
       </div>
-
       <!-- Submit -->
       <button
       type="button"
