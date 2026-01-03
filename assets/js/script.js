@@ -117,16 +117,15 @@ document.querySelectorAll('.sewa-btn').forEach(btn => {
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-  const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
-  const choosePackage = document.getElementById('choose-package');
-  const contactForm = document.getElementById('contact');
+const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
+const rentalPackages = document.getElementById('rental-packages');
+const contactForm = document.getElementById('contact');
 
-  if (btnSewaSekarang && choosePackage) {
-    btnSewaSekarang.addEventListener('click', () => {
-      const paketSection = document.getElementById('paket');
-
-      paketSection.scrollIntoView({
-        behavior: 'smooth'
+if (btnSewaSekarang && rentalPackages) {
+  btnSewaSekarang.addEventListener('click', () => {
+    rentalPackages.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
       });
 
       if (contactForm) {
