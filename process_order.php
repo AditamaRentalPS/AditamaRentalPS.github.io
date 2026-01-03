@@ -78,7 +78,7 @@ try {
     // 5️⃣ Commit
     $conn->commit();
 
-    header("Location: index.php?success=1");
+  header('Location: success.php');
     exit;
 
 } catch (Exception $e) {
