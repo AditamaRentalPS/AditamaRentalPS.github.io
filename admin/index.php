@@ -151,7 +151,7 @@ input[type="number"] {
         </tr>
     </thead>
     <tbody>
-        <?php while ($row = $result->fetch_assoc()): ?>
+      sa<?php while ($row = $result->fetch(PDO::FETCH_ASSOC)): ?>
         <tr class="border-t border-gray-700">
             <td class="p-3"><?= htmlspecialchars($row['name']) ?></td>
             <td class="p-3 text-center"><?= $row['stock'] ?></td>
