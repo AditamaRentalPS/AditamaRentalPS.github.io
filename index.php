@@ -245,13 +245,13 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 5 unit</span>
                     </div>
-                      <a
-                        href="#contact"
-                        class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
-                        data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
-                      >
-                        Pesan
-                      </a>
+                      <button
+                      class="sewa-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+                      data-package="ps5_standard"
+                    >
+                      Pesan
+                    </button>
+
               </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
@@ -264,13 +264,12 @@ $psPackages = [
                     <div class="text-sm font-semibold mb-3">
                         <span class="text-green-400"><i class="fas fa-check-circle"></i> Tersedia: 3 unit</span>
                     </div>
-                        <a
-                          href="#contact"
-                          class="inline-block bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded sewa-btn"
-                          data-ps="<?= htmlspecialchars($row['ps_type']) ?>"
-                        >
-                          Pesan
-                        </a>
+                    <button
+                      class="sewa-btn bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded"
+                      data-package="ps4_pro"
+                    >
+                      Pesan
+                    </button>
                 </div>
             </article>
             <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition flex flex-col">
@@ -284,11 +283,12 @@ $psPackages = [
                 <div class="text-sm font-semibold mb-3">
                     <span class="text-red-400"><i class="fas fa-times-circle"></i> Stok Habis</span>
                 </div>
-
-                <a href="javascript:void(0)" 
-                  class="inline-block bg-gray-600 cursor-not-allowed px-4 py-2 rounded text-center font-semibold text-white">
-                    pesan
-                </a>
+                <button
+                  class="sewa-btn w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+                  data-package="ps3_classic"
+                >
+                  Pesan
+                </button>
             </div>
         </article>
         </div>

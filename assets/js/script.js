@@ -137,4 +137,31 @@ document.querySelectorAll('.sewa-btn').forEach(button => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('.sewa-btn');
+  const contactSection = document.getElementById('contact');
+  const packageSelect = document.getElementById('package');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selectedPackage = btn.dataset.package;
+      if (!selectedPackage) return;
+
+      // 1. tampilkan form
+      contactSection.classList.remove('hidden');
+
+      // 2. scroll ke form
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+
+      // 3. isi paket otomatis
+      setTimeout(() => {
+        packageSelect.value = selectedPackage;
+
+        // trigger supaya harga terhitung
+        packageSelect.dispatchEvent(new Event('change'));
+      }, 300);
+    });
+  });
+});
+
 });
