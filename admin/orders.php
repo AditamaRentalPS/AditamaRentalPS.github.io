@@ -19,9 +19,16 @@ SELECT
   o.created_at,
   p.name AS product_name
 FROM orders o
-JOIN products p ON o.product_slug = p.slug
+JOIN products p ON o.package = p.code
 ORDER BY o.created_at DESC
 ";
+
+$result = $conn->query($sql);
+
+if (!$result) {
+    die("Query error: " . $conn->error);
+}
+
 
 $result = $conn->query($sql);
 ?>
