@@ -49,7 +49,7 @@ $psPackages = [
         >
           <img
             id="logo"
-            src="assets/images/logo.png"
+            src="assets/images/game/logo.png"
             alt="Logo PS Rental Indonesia"
             class="h-10 w-auto cursor-pointer"
           />
