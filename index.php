@@ -1,44 +1,19 @@
 <?php
 session_start();
+require_once __DIR__ . '/includes/db.php';
 
-/*
-|--------------------------------------------------------------------------
-| LOGIN STATE
-|--------------------------------------------------------------------------
-| Digunakan hanya untuk kebutuhan UI (navbar, admin akses, dll)
-*/
-$isLoggedIn = false;
+// login status (aman)
+$isLoggedIn = isset($_SESSION['user_id']) || isset($_SESSION['admin_logged_in']);
 
-if (isset($_SESSION['user_id']) || isset($_SESSION['admin_logged_in'])) {
-    $isLoggedIn = true;
+// ambil produk dari database
+$sql = "SELECT * FROM products ORDER BY id ASC";
+$result = mysqli_query($conn, $sql);
+
+// pastikan selalu array
+$products = [];
+if ($result) {
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
-
-/*
-|--------------------------------------------------------------------------
-| DATA PAKET SEWA (sementara, nanti bisa dari database)
-|--------------------------------------------------------------------------
-*/
-$psPackages = [
-    'ps5_standard' => [
-        'name'        => 'PS5 Standard Edition',
-        'daily_rate'  => 150000,
-        'hourly_rate' => 25000,
-        'stock'       => 5
-    ],
-    'ps4_pro' => [
-        'name'        => 'PS4 Pro Edition',
-        'daily_rate'  => 100000,
-        'hourly_rate' => 15000,
-        'stock'       => 3
-    ],
-    'ps3_classic' => [
-        'name'        => 'PS3 Classic Edition',
-        'daily_rate'  => 80000,
-        'hourly_rate' => 10000,
-        'stock'       => 0
-    ],
-];
-
 ?>
 
 <!DOCTYPE html>
@@ -256,65 +231,65 @@ $psPackages = [
 </section>
 
     <section class="max-w-7xl mx-auto px-6 md:px-12 py-12" id="rental-packages">
-    <h2 class="text-3xl font-bold mb-8 text-white text-center">
-        Paket Sewa PlayStations
-    </h2>
+  <h2 class="text-3xl font-bold mb-8 text-white text-center">
+    Paket Sewa PlayStations
+  </h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <?php foreach ($psPackages as $key => $ps): ?>
-            <?php $isAvailable = $ps['stock'] > 0; ?>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+    <?php foreach ($products as $ps): ?>
+      <?php $isAvailable = (int)$ps['stock'] > 0; ?>
 
-            <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg transition flex flex-col
-                <?= $isAvailable ? 'hover:shadow-2xl' : 'opacity-60' ?>">
+      <article class="bg-gray-800 rounded-lg overflow-hidden shadow-lg flex flex-col
+        <?= $isAvailable ? 'hover:shadow-2xl' : 'opacity-60' ?>">
 
-                <img
-                    src="assets/images/game/<?= explode('_', $key)[0] ?>.jpg"
-                    alt="<?= htmlspecialchars($ps['name']) ?>"
-                    class="w-full h-56 object-cover"
-                />
+        <img
+          src="assets/images/game/<?= explode('_', $ps['code'])[0] ?>.jpg"
+          alt="<?= htmlspecialchars($ps['name']) ?>"
+          class="w-full h-56 object-cover"
+        />
 
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-semibold mb-2">
-                        <?= htmlspecialchars($ps['name']) ?>
-                    </h3>
+        <div class="p-6 flex flex-col flex-grow">
+          <h3 class="text-xl font-semibold mb-2">
+            <?= htmlspecialchars($ps['name']) ?>
+          </h3>
 
-                    <p class="text-blue-400 font-bold text-lg mb-2">
-                        Mulai dari Rp<?= number_format($ps['daily_rate'], 0, ',', '.') ?> / hari
-                    </p>
+          <p class="text-blue-400 font-bold text-lg mb-2">
+            Mulai dari Rp<?= number_format($ps['daily_rate'], 0, ',', '.') ?> / hari
+          </p>
 
-                    <p class="text-blue-400 font-bold text-md mb-4">
-                        Atau Rp<?= number_format($ps['hourly_rate'], 0, ',', '.') ?> / jam
-                    </p>
+          <p class="text-blue-400 font-bold text-md mb-4">
+            Atau Rp<?= number_format($ps['hourly_rate'], 0, ',', '.') ?> / jam
+          </p>
 
-                    <!-- STATUS STOK -->
-                    <div class="text-sm font-semibold mb-4">
-                        <?php if ($isAvailable): ?>
-                            <span class="text-green-400">
-                                ✔ Tersedia: <?= $ps['stock'] ?> unit
-                            </span>
-                        <?php else: ?>
-                            <span class="text-red-400">
-                                ✖ Stok Habis
-                            </span>
-                        <?php endif; ?>
-                    </div>
+          <!-- STATUS STOK -->
+          <div class="text-sm font-semibold mb-4">
+            <?php if ($isAvailable): ?>
+              <span class="text-green-400">
+                ✔ Tersedia: <?= $ps['stock'] ?> unit
+              </span>
+            <?php else: ?>
+              <span class="text-red-400">
+                ✖ Stok Habis
+              </span>
+            <?php endif; ?>
+          </div>
 
-                    <!-- BUTTON -->
-                    <button
-                        class="sewa-btn w-full py-3 rounded-lg font-semibold transition
-                            <?= $isAvailable
-                                ? 'bg-blue-600 hover:bg-blue-700 text-white'
-                                : 'bg-gray-600 text-gray-300 cursor-not-allowed'
-                            ?>"
-                        data-package="<?= $key ?>"
-                        <?= $isAvailable ? '' : 'disabled' ?>
-                    >
-                        Pesan
-                    </button>
-                </div>
-            </article>
-        <?php endforeach; ?>
-    </div>
+          <!-- BUTTON -->
+          <button
+            class="sewa-btn w-full py-3 rounded-lg font-semibold transition
+              <?= $isAvailable
+                ? 'bg-blue-600 hover:bg-blue-700 text-white'
+                : 'bg-gray-600 text-gray-300 cursor-not-allowed'
+              ?>"
+            data-package="<?= $ps['code'] ?>"
+            <?= $isAvailable ? '' : 'disabled' ?>
+          >
+            Pesan
+          </button>
+        </div>
+      </article>
+    <?php endforeach; ?>
+  </div>
 </section>
 
     </section>
