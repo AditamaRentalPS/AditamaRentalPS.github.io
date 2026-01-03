@@ -2,7 +2,6 @@
 session_start();
 require_once '../includes/db.php';
 
-
 // proteksi admin
 if (!isset($_SESSION['admin_logged_in'])) {
     header('Location: ../auth/login.php');
@@ -16,6 +15,9 @@ $stmt = $pdo->query("
     ORDER BY created_at DESC
 ");
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// Ambil produk
+$result = $pdo->query("SELECT * FROM products");
 ?>
 <!DOCTYPE html>
 <html lang="id">
