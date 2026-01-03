@@ -38,23 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===============================
 function hitungTotal() {
   const durasiInput = document.getElementById('duration');
-  const priceInput = document.getElementById('price-per-unit');
-  const totalText = document.getElementById('total-price');
+  const priceInput  = document.getElementById('price-per-unit');
+  const totalText   = document.getElementById('total-price');
   const totalHidden = document.getElementById('total_price'); // 🔥 PENTING
 
   if (!durasiInput || !priceInput || !totalText || !totalHidden) return;
 
   const durasi = parseInt(durasiInput.value) || 0;
-  const harga = parseInt(priceInput.value) || 0;
+  const harga  = parseInt(priceInput.value) || 0;
 
   const total = durasi * harga;
 
   // tampil di UI
   totalText.textContent = 'Rp ' + total.toLocaleString('id-ID');
 
-  // 🔥 KIRIM KE PHP
+  // 🔥 INI YANG DIKIRIM KE PHP
   totalHidden.value = total;
 }
+
 
   // ===============================
   // PESAN DARI CARD → BUKA FORM
