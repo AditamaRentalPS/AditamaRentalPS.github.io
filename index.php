@@ -363,21 +363,6 @@ if ($result) {
         />
       </div>
 
-      <!-- Email -->
-      <div>
-        <label class="block mb-2 font-semibold" for="email">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          required
-          placeholder="Masukkan email Anda"
-          class="w-full rounded-md px-4 py-3 text-gray-900 focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
       <!-- INFO PAKET DIPILIH -->
       <div id="selected-package-info"
           class="mb-6 p-4 rounded-lg bg-gray-900 text-white hidden">
@@ -394,7 +379,6 @@ if ($result) {
       <!-- HIDDEN INPUT -->
       <input type="hidden" name="package" id="package">
       <input type="hidden" name="price_per_unit" id="price-per-unit">
-
 
       <!-- Telepon -->
       <div>

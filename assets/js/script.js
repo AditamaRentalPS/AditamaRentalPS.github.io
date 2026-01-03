@@ -13,80 +13,122 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===============================
-  // CTA: SEWA SEKARANG → SCROLL KE PAKET
+  // CTA SEWA SEKARANG → SCROLL KE PAKET
   // ===============================
- const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
-const rentalPackages = document.getElementById('rental-packages');
+  const btnSewaSekarang = document.getElementById('btn-sewa-sekarang');
+  const rentalPackages = document.getElementById('rental-packages');
 
-if (btnSewaSekarang && rentalPackages) {
-  btnSewaSekarang.addEventListener('click', () => {
-    rentalPackages.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+  if (btnSewaSekarang && rentalPackages) {
+    btnSewaSekarang.addEventListener('click', () => {
+      rentalPackages.scrollIntoView({ behavior: 'smooth' });
     });
-  });
-}
+  }
+
+  // ===============================
+  // AMBIL ELEMEN FORM
+  // ===============================
+  const pricePerUnitInput = document.getElementById('price-per-unit');
+  const durationInput     = document.getElementById('duration');
+  const durationType      = document.getElementById('duration-type');
+  const totalText         = document.getElementById('total-price');
+  const priceInfo         = document.getElementById('selected-package-price');
+
+  // ===============================
+  // HITUNG TOTAL
+  // ===============================
+  function hitungTotal() {
+    if (!durationInput || !pricePerUnitInput || !totalText) return;
+
+    const durasi = parseInt(durationInput.value) || 0;
+    const harga  = parseInt(pricePerUnitInput.value) || 0;
+
+    const total = durasi * harga;
+
+    totalText.textContent =
+      'Rp ' + total.toLocaleString('id-ID');
+  }
 
   // ===============================
   // PESAN DARI CARD → BUKA FORM
   // ===============================
-document.querySelectorAll('.sewa-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
+  document.querySelectorAll('.sewa-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
 
-    const code = btn.dataset.package;
-    const name = btn.dataset.name;
-    const daily = parseInt(btn.dataset.daily);
+      const code   = btn.dataset.package;
+      const name   = btn.dataset.name;
+      const daily  = parseInt(btn.dataset.daily);
+      const hourly = parseInt(btn.dataset.hourly);
 
-    // isi hidden input
-    document.getElementById('package').value = code;
-    document.getElementById('price-per-unit').value = daily;
+      // simpan harga ke dataset
+      pricePerUnitInput.dataset.daily  = daily;
+      pricePerUnitInput.dataset.hourly = hourly;
+      pricePerUnitInput.value = daily;
 
-    // tampilkan info paket
-    document.getElementById('selected-package-name').textContent = name;
-    document.getElementById('selected-package-price').textContent =
-      'Rp ' + daily.toLocaleString('id-ID') + ' / hari';
+      document.getElementById('package').value = code;
 
-    document
-      .getElementById('selected-package-info')
-      .classList.remove('hidden');
+      document.getElementById('selected-package-name').textContent = name;
+      priceInfo.textContent =
+        'Rp ' + daily.toLocaleString('id-ID') + ' / hari';
 
-    // 🔥 TAMPILKAN SECTION CONTACT + FORM
-    const contactSection = document.getElementById('contact');
-    const formSection = document.getElementById('rental-form');
+      document.getElementById('selected-package-info')
+        .classList.remove('hidden');
 
-    if (contactSection && formSection) {
-      contactSection.classList.remove('hidden'); // ⬅️ INI YANG KURANG
-      formSection.classList.remove('hidden');
+      document.getElementById('contact')?.classList.remove('hidden');
+      document.getElementById('rental-form')?.classList.remove('hidden');
 
-      contactSection.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
+      document.getElementById('contact')
+        ?.scrollIntoView({ behavior: 'smooth' });
 
+      hitungTotal();
+    });
   });
-});
-
-
 
   // ===============================
-  // DATE MIN TODAY
+  // JENIS DURASI (HARI / JAM)
+  // ===============================
+  if (durationType) {
+    durationType.addEventListener('change', () => {
+      const isHourly = durationType.value === 'jam';
+
+      const price = isHourly
+        ? parseInt(pricePerUnitInput.dataset.hourly)
+        : parseInt(pricePerUnitInput.dataset.daily);
+
+      pricePerUnitInput.value = price;
+
+      priceInfo.textContent =
+        'Rp ' + price.toLocaleString('id-ID') +
+        (isHourly ? ' / jam' : ' / hari');
+
+      hitungTotal();
+    });
+  }
+
+  // ===============================
+  // HITUNG TOTAL SAAT DURASI DIKETIK
+  // ===============================
+  if (durationInput) {
+    durationInput.addEventListener('input', hitungTotal);
+  }
+
+  // ===============================
+  // DATE DEFAULT HARI INI
   // ===============================
   const dateInput = document.getElementById('rental-date');
   if (dateInput) {
     const today = new Date().toISOString().split('T')[0];
-    dateInput.min = today;
+    dateInput.value = today;
+    dateInput.min   = today;
   }
 
   // ===============================
-  // LOGO → ADMIN (5x CLICK)
+  // LOGO → ADMIN (5x KLIK)
   // ===============================
   const logo = document.getElementById('logo');
   if (logo) {
-    let clickCount = 0;
+    let count = 0;
     logo.addEventListener('click', () => {
-      clickCount++;
-      if (clickCount === 5) {
+      if (++count === 5) {
         window.location.href = 'admin/index.php';
       }
     });
