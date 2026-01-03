@@ -6,6 +6,18 @@ $user = 'root';      // Username database Anda (contoh: 'root' untuk XAMPP/WAMP/
 $pass = '';          // Password database Anda (contoh: kosong '' untuk XAMPP/WAMP/Laragon)
 $dbname = 'dc_rental';  // Nama database Anda, harus 'rental' seperti yang ada di phpMyAdmin
 
+try {
+    $pdo = new PDO(
+        "mysql:host=localhost;dbname=dc_rental;charset=utf8",
+        "root",
+        ""
+    );
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Koneksi DB gagal: " . $e->getMessage());
+}
+
+
 // Buat koneksi MySQLi
 $conn = new mysqli($host, $user, $pass, $dbname);
 

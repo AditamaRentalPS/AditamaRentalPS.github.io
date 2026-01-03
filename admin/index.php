@@ -2,17 +2,20 @@
 session_start();
 require_once '../includes/db.php';
 
-$stmt = $pdo->query("SELECT * FROM orders ORDER BY created_at DESC");
-$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Proteksi admin
+// proteksi admin
 if (!isset($_SESSION['admin_logged_in'])) {
     header('Location: ../auth/login.php');
     exit;
 }
 
-// Ambil produk
-$result = $conn->query("SELECT * FROM products");
+// ambil semua order
+$stmt = $pdo->query("
+    SELECT *
+    FROM orders
+    ORDER BY created_at DESC
+");
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="id">
