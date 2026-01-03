@@ -2,6 +2,9 @@
 session_start();
 require_once '../includes/db.php';
 
+$stmt = $pdo->query("SELECT * FROM orders ORDER BY created_at DESC");
+$orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 // Proteksi admin
 if (!isset($_SESSION['admin_logged_in'])) {
     header('Location: ../auth/login.php');
@@ -95,8 +98,37 @@ input[type="number"] {
 <body class="bg-gray-900 text-white p-8">
 
 <h1 class="text-2xl font-bold mb-6">Kelola Stok PlayStation</h1>
-<a href="orders.php" style="color:#60a5fa;">📦 Lihat Order Masuk</a>
-<div class="admin-header">
+<h2 style="margin-top:40px;">📦 Daftar Order Masuk</h2>
+
+<table border="1" cellpadding="10" cellspacing="0" width="100%">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nama</th>
+      <th>Paket</th>
+      <th>No HP</th>
+      <th>Tanggal</th>
+      <th>Durasi</th>
+      <th>Total</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <?php foreach ($orders as $o): ?>
+      <tr>
+        <td><?= $o['id'] ?></td>
+        <td><?= htmlspecialchars($o['name']) ?></td>
+        <td><?= $o['package'] ?></td>
+        <td><?= $o['phone'] ?></td>
+        <td><?= $o['rental_date'] ?></td>
+        <td><?= $o['duration'] . ' ' . $o['duration_type'] ?></td>
+        <td>Rp <?= number_format($o['total_price'], 0, ',', '.') ?></td>
+        <td><?= $o['status'] ?></td>
+      </tr>
+    <?php endforeach; ?>
+  </tbody>
+</table>
+  <div class="admin-header">
   <h1>Kelola Stok PlayStation</h1>
 
   <form action="../auth/logout.php" method="POST">
