@@ -144,27 +144,43 @@ function hitungTotal() {
   }
 
   const btnBayar = document.getElementById('btn-bayar');
-  const qrisModal = document.getElementById('qris-modal');
-  const btnKonfirmasi = document.getElementById('btn-konfirmasi-bayar');
   const rentalForm = document.getElementById('rental-form');
 
-  if (btnBayar && qrisModal && btnKonfirmasi && rentalForm) {
+  if (btnBayar && rentalForm) {
 
-    // klik SEWA SEKARANG → tampilkan QRIS
-    btnBayar.addEventListener('click', () => {
-      qrisModal.classList.remove('hidden');
-      qrisModal.classList.add('flex');
+  btnBayar.addEventListener('click', () => {
+    hitungTotal(); // pastikan total_price terisi
+
+    const formData = new FormData(rentalForm);
+
+    fetch('create_transaction.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => {
+      if (data.token) {
+        snap.pay(data.token, {
+          onSuccess: function () {
+            window.location.href = 'success.php';
+          },
+          onPending: function () {
+            alert('Menunggu pembayaran...');
+          },
+          onError: function () {
+            alert('Pembayaran gagal');
+          }
+        });
+      } else {
+        alert('Gagal membuat transaksi');
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('Terjadi error');
     });
+  });
 
-    // klik SAYA SUDAH BAYAR → submit form
-   btnKonfirmasi.addEventListener('click', () => {
-  hitungTotal(); // 🔥 PASTIKAN total_price TERISI
+}
 
-  console.log('TOTAL PRICE DIKIRIM:', document.getElementById('total_price').value);
-
-  qrisModal.classList.add('hidden');
-  rentalForm.submit();
-   });
-
-  }
 });
