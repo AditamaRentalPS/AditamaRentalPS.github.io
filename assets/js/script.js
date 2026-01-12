@@ -152,7 +152,6 @@ function hitungTotal() {
     hitungTotal(); // pastikan total_price terisi
 
     const formData = new FormData(rentalForm);
-    document.getElementById('total_price').value = totalPrice;
 
     fetch('create_transaction.php', {
   method: 'POST',
