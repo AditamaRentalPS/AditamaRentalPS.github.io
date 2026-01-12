@@ -38,7 +38,7 @@ if ($result) {
     </style>
         <script
         src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key='SB-Mid-client-wHHBggeIekYnNkD8'>
+        data-client-key='SB-Mid-client-JKOGDv6TRSEFd5TO'>
           </script>
 </head>
 <body class="bg-gray-900 text-white relative">
