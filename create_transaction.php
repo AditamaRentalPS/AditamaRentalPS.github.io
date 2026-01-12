@@ -1,5 +1,5 @@
 <?php
-require_once 'includes/midtrans_config.php';
+require_once __DIR__ . '/includes/midtrans_config.php';
 
 // Ambil data dari form
 $name        = $_POST['name'];
