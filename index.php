@@ -36,13 +36,11 @@ if ($result) {
             object-fit: cover; /* Pastikan gambar memenuhi area tanpa terdistorsi */
         }
     </style>
-</head>
-
-<script
+        <script
   src="https://app.sandbox.midtrans.com/snap/snap.js"
   data-client-key="ISI_CLIENT_KEY_SANDBOX_KAMU">
-</script>
-
+        </script>
+</head>
 <body class="bg-gray-900 text-white relative">
     <header class="bg-gray-900 sticky top-0 z-50 border-b border-gray-700">
         <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
@@ -447,7 +445,6 @@ if ($result) {
         />
       </div>
 
-      <!-- Total Harga -->
       <!-- Total Harga -->
       <div class="text-xl font-bold text-center">
         Total Harga:

@@ -157,29 +157,76 @@ function hitungTotal() {
     fetch('create_transaction.php', {
   method: 'POST',
   body: formData
-})
-.then(res => {
-  console.log('STATUS:', res.status);
-  return res.text(); // ⬅️ PENTING
-})
-.then(text => {
-  console.log('RESPONSE RAW:', text);
+    })
+    .then(res => {
+      console.log('STATUS:', res.status);
+      return res.text(); // ⬅️ PENTING
+    })
+    .then(text => {
+      console.log('RESPONSE RAW:', text);
 
-  const data = JSON.parse(text); // kalau error, berarti PHP bermasalah
+      const data = JSON.parse(text); // kalau error, berarti PHP bermasalah
 
-  if (data.token) {
-    snap.pay(data.token);
-  } else {
-    alert('Token tidak ada');
+      if (data.token) {
+        snap.pay(data.token);
+      } else {
+        alert('Token tidak ada');
+      }
+    })
+    .catch(err => {
+      console.error('FETCH ERROR:', err);
+      alert('Terjadi error');
+    });
+
+      });
+
+    }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const btnBayar = document.getElementById("btn-bayar");
+  const rentalForm = document.getElementById("rental-form");
+
+  if (!btnBayar || !rentalForm) {
+    console.error("Tombol atau form tidak ditemukan");
+    return;
   }
-})
-.catch(err => {
-  console.error('FETCH ERROR:', err);
-  alert('Terjadi error');
+
+  btnBayar.addEventListener("click", async () => {
+    try {
+      const formData = new FormData(rentalForm);
+
+      const response = await fetch("create_transaction.php", {
+        method: "POST",
+        body: formData
+      });
+
+      const result = await response.json();
+
+      if (result.token) {
+        snap.pay(result.token, {
+          onSuccess: function () {
+            window.location.href = "success.php";
+          },
+          onPending: function () {
+            alert("Menunggu pembayaran...");
+          },
+          onError: function () {
+            alert("Pembayaran gagal");
+          },
+          onClose: function () {
+            alert("Popup ditutup");
+          }
+        });
+      } else {
+        alert("Gagal membuat transaksi");
+        console.error(result);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Terjadi kesalahan");
+    }
+  });
 });
 
-  });
-
-}
 
 });
