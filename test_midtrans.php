@@ -1,5 +1,13 @@
 <?php
 phpinfo();
-require_once 'includes/midtrans_config.php';
+require_once __DIR__.'/includes/midtrans_config.php';
 
-echo "Midtrans config OK";
+$params = [
+  'transaction_details' => [
+    'order_id' => 'TEST-' . time(),
+    'gross_amount' => 10000,
+  ]
+];
+
+echo \Midtrans\Snap::getSnapToken($params);
+

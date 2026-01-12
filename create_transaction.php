@@ -10,15 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 require_once __DIR__ . '/includes/midtrans_config.php';
 
 // Ambil data dari form
-$name = $_POST['name'] ?? '';
-$phone = $_POST['phone'] ?? '';
-$total_price = isset($_POST['total_price']) ? (int)$_POST['total_price'] : 0;
+$name = $_POST['name'] ?? 'Guest';
+$phone = $_POST['phone'] ?? '0000000000';
+$total_price = (int) ($_POST['total_price'] ?? 0);
 
 if ($total_price <= 0) {
     http_response_code(400);
     echo json_encode(['error' => 'Total harga tidak valid']);
     exit;
 }
+
 
 
 // Order ID unik
